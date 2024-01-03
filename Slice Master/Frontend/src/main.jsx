@@ -1,16 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
 import './index.css'
 import { Route, Router, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
 import Layout from './Layout.jsx'
-import Home from './pages/Home/Home.jsx'
+import {Login, Home} from './pages/index'
 
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Layout />}>
         <Route path='' element={<Home />}/>
+        <Route path='login' element={<Login />}/>
     </Route>
   )
 )
