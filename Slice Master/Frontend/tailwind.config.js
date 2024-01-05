@@ -15,12 +15,14 @@ export default {
       fontFamily : {
         'parisienne' : ['Parisienne'],
         'poppins' : ['Poppins'],
+        'kaushan' : ['Kaushan Script']
       },
       animation: {
         wiggle: 'wiggle 1.5s ease-in-out infinite',
       },
       backgroundImage: {
-        'pizza-background': "url('./assets/wallpaper/background.png')"
+        'pizza-background': "url('./assets/wallpaper/background.png')",
+        'home-pizza-background': "url('./assets/wallpaper/pizza.jpg')"
       },
       dropShadow: {
         '3xl': '0px -1px 20px rgba(249, 115, 22, 0.5)',
