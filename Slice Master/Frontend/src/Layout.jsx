@@ -13,5 +13,4 @@ function Layout() {
     </div>
   ) : <Navigate to="login" />
 }
-
 export default Layout
