@@ -1,16 +1,17 @@
 import React from 'react'
-import { Outlet } from 'react-router-dom'
+import { Outlet, Navigate } from 'react-router-dom'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 
 function Layout() {
-  return (
+  let auth = {'token': false};
+  return auth.token ? (
     <div>
       <Header />
       <Outlet />
       <Footer />
     </div>
-  )
+  ) : <Navigate to="login" />
 }
 
 export default Layout

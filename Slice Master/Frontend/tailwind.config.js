@@ -21,7 +21,10 @@ export default {
       },
       backgroundImage: {
         'pizza-background': "url('./assets/wallpaper/background.png')"
-      }
+      },
+      dropShadow: {
+        '3xl': '0px -1px 20px rgba(249, 115, 22, 0.5)',
+      },
     },
   },
   plugins: [],

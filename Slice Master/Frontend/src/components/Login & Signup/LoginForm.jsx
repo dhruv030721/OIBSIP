@@ -1,8 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function LoginForm() {
     return (
-        <div className='font-poppins w-[60%] h-[50%] flex flex-col justify-around'>
+        <div className='font-poppins w-[60%] h-[55%] flex flex-col justify-around'>
             <form className='flex flex-col  font-bold'>
                 <label htmlFor="email">Email Address</label>
                 <input type="email" name="email" id="email" className='outline-none border-b-2 border-black text-sm mt-2' />
@@ -13,10 +14,11 @@ function LoginForm() {
                     <span class="bg-rose-400 shadow-rose-400 absolute -top-[150%] left-0 inline-flex w-80 h-[5px] rounded-md opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]"></span>
                     Login &rarr;
                 </button>
+            <Link to="/signup" className='text-orange-700 font-black underline text-center'>Don't have an account?</Link>
             <div className='h-[10%] flex flex-col items-center'>
                 <h1 className='text-center mb-10 font-black border-b-2 border-black inline-block'>OR</h1>
                 <button
-                    class="flex items-center justify-center py-2 px-20 bg-gray-100 hover:bg-gray-200 focus:ring-blue-500 focus:ring-offset-blue-200 text-gray-700 w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
+                    class="flex items-center justify-center py-2 px-20 bg-gray-100 hover:bg-gray-200 focus:ring-blue-500 focus:ring-offset-blue-200 text-gray-700 w-full  transition ease-in duration-200 text-center text-base font-semibold shadow-md drop-shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg hover:border-2 hover:border-gray-700"
                 >
                     <svg
                         viewBox="0 0 24 24"
