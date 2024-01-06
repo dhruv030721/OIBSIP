@@ -17,7 +17,7 @@ function Template({ formType }) {
       </div>
       <div className='w-[60%] h-screen'>
         {/* Photo  */}
-        <img src={SideBackground} alt="" className='object-cover w-[100%] h-[100%]' />
+        <img src={SideBackground} alt="" className='w-full h-full' />
       </div>
     </div>
   )
