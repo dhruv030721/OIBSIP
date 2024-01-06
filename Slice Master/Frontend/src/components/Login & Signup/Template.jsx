@@ -12,8 +12,8 @@ function Template({ formType }) {
           <h1 className='logo-text font-parisienne font-black text-6xl first-letter:text-red-500 '>Master</h1>
           <img src={PizzaIcon} alt="" className='w-20 h-20 animate-wiggle drop-shadow-3xl' />
         </div>
-        <h1 className="welcome-text font-poppins font-extrabold text-3xl">Welcome To Back</h1>
-        {formType}
+          <h1 className="text-center font-poppins font-extrabold text-3xl">Welcome To Back</h1>
+          {formType}
       </div>
       <div className='w-[60%] h-screen'>
         {/* Photo  */}
