@@ -22,7 +22,7 @@ function Header() {
         {/* navbar */}
         <ul className='flex justify-center items-center gap-6 font-poppins '>
           {menu.map((item) => (
-            <Link key={item} to={item.toLowerCase()} className='hover:scale-110 transition-all hover:transition-all outline-none'>{item}</Link>
+            <Link key={item} to={item.toLowerCase()} className='relative hover:scale-110 transition-all hover:transition-all outline-none before:bg-orange-500 before:absolute before:w-0 hover:before:transition-all before:top-7 before:left-0 before:h-0.5 hover:before:w-full'>{item}</Link>
           ))}
         </ul>
       </nav>
