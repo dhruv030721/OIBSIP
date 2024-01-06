@@ -15,7 +15,6 @@ function Header() {
         </nav>
       </header>
       <div>
-        
       </div>
     </div>
   )
