@@ -6,7 +6,7 @@ import Footer from './components/Footer/Footer'
 function Layout() {
   let auth = {'token': true};
   return auth.token ? (
-    <div>
+    <div className=''>
       <Header />
       <Outlet />
       <Footer />

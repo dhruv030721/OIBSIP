@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {
+      colors : {
+        'bg-gray' : '#222324'
+      },
       keyframes: {
         wiggle: {
           '0%, 100%': { transform: 'translatey(-10px)' },
@@ -25,7 +28,8 @@ export default {
         'home-pizza-background': "url('./assets/wallpaper/pizza.jpg')"
       },
       dropShadow: {
-        '3xl': '0px -1px 20px rgba(249, 115, 22, 0.5)',
+        '3xl': '0px -1px 20px rgba(249, 115, 22, 0.3)',
+        'white-3xl': '0px 1px 10px rgba(0, 0, 0, 0.2)',
       },
     },
   },
