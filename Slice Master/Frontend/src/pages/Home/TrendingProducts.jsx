@@ -44,7 +44,7 @@ function TrendingProducts() {
   return (
     <div className='font-poppins font-black bg-bg-gray p-5 flex flex-col items-center'>
       <div className=' border-b-orange-500 border-2 border-transparent block mb-10 p-5'>
-        <h1 className='text-center text-orange-500 text-3xl '>Trending Products</h1>
+        <h1 className='text-center text-orange-500 text-3xl font-kaushan'>Trending Products</h1>
       </div>
       <div className='flex flex-row justify-evenly'>
         {pizzaItem.map((item) => (

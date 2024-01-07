@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import PizzaIcon from '../../assets/wallpaper/pizzaIcon.png'
 import { BsCart3 } from "react-icons/bs";
 
@@ -7,11 +7,11 @@ import { BsCart3 } from "react-icons/bs";
 
 function Header() {
 
-  const menu = ["Home", "Category", "AboutUs", "ContactUs"]
+  const menu = [{name : "Home", link : '/'},{name : "Category", link : 'category'},{name : "About Us", link : 'aboutus'},{name : "Contact Us", link : 'contactus'},]
 
 
   return (
-    <div className='h-[8vh] fixed z-20 flex items-center justify-between w-full bg-transparent bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-30  before:bg-black before:absolute before:w-full before:h-full before:opacity-40 before:-z-20 text-white '>
+    <div className='h-[8vh] fixed z-20 flex items-center bg-bg-gray justify-between w-full bg-transparent bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-30  before:bg-black before:absolute before:w-full before:h-full before:opacity-40 before:-z-20 text-white '>
       <div className='flex items-center ml-5'>
         {/* Logo */}
         <h1 className='logo-text font-parisienne font-black text-3xl first-letter:text-orange-500 '>Slice&#160;</h1>
@@ -22,7 +22,7 @@ function Header() {
         {/* navbar */}
         <ul className='flex justify-center items-center gap-6 font-poppins '>
           {menu.map((item) => (
-            <Link key={item} to={item.toLowerCase()} className='relative hover:scale-110 transition-all hover:transition-all outline-none before:bg-orange-500 before:absolute before:w-0 hover:before:transition-all before:top-7 before:left-0 before:h-0.5 hover:before:w-full'>{item}</Link>
+            <NavLink key={item.name} to={item.link} className={({isActive})=>`relative hover:scale-110 transition-all hover:transition-all outline-none before:bg-orange-500 before:absolute before:w-0 hover:before:transition-all before:top-7 before:left-0 before:h-0.5 hover:before:w-full ${isActive ? "before:w-full" : "before:w-0"}`}>{item.name}</NavLink>
           ))}
         </ul>
       </nav>

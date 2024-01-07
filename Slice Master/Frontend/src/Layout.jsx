@@ -4,12 +4,16 @@ import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 
 function Layout() {
-  let auth = {'token': true};
+  let auth = { 'token': true };
   return auth.token ? (
     <div className=''>
-      <Header />
+      <div className='bg-bg-gray'>
+        <Header />
+      </div>
       <Outlet />
-      <Footer />
+      <div className='bg-bg-gray'>
+        <Footer />
+      </div>
     </div>
   ) : <Navigate to="login" />
 }

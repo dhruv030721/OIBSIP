@@ -2,7 +2,7 @@ import React from 'react'
 
 function HeroSection() {
   return (
-    <div className='before:bg-home-pizza-background before:absolute before:w-full before:h-screen before:bg-cover before:opacity-60 before:bg-no-repeat w-screen h-screen  after:bg-black after:w-full after:h-screen after:absolute after:opacity-70 before:-z-40 after:-z-30 flex flex-col justify-center items-center text-white font-poppins before:left-0 after:left-0 before:top-0 after:top-0'>
+    <div className='before:bg-home-pizza-background before:absolute before:w-full before:h-screen before:bg-cover before:bg-bottom before:opacity-60 before:bg-no-repeat h-screen after:bg-black after:w-full after:h-screen after:absolute after:opacity-70 before:-z-40 after:-z-30 flex flex-col justify-center items-center text-white font-poppins before:left-0 after:left-0 before:top-0 after:top-0'>
     <div className='w-[40%] '>
       <div className='w-[100%] flex'>
         <h1 className='text-7xl font-semibold font-kaushan text-orange-200'>Life&#160;</h1>

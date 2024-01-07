@@ -2,12 +2,12 @@ import React from 'react'
 import Veg from '../../assets/Veg.png'
 function Card({img,logo,name,description,price}) {
     return (
-        <div className='flex flex-col justify-center items-center w-[20%] bg-gray-500 rounded-2xl bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-30 drop-shadow-white-3xl shadow-2xl border-t-orange-500 border-b-orange-500 border-2 border-x-transparent text-white py-5 hover:-translate-y-3 transition-all
+        <div className='flex flex-col justify-center items-center w-[20%] bg-gray-500 rounded-2xl bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-30 drop-shadow-white-xl shadow-2xl border-t-orange-500 border-b-orange-500 border-2 border-x-transparent text-white py-5 hover:-translate-y-3 transition-all
     '>
             {/* Img */}
             <img src={img} alt="Farm House" className='w-[50%] drop-shadow-3xl' />
             {/* Name */}
-            <h1 className='text-2xl font-kaushan'>{name}</h1>
+            <h1 className='text-xl font-kaushan'>{name}</h1>
             <div className='flex items-center justify-between p-5'>
                 {/* CategoryLogo */}
                 <h1>&#8377; {price}</h1>
