@@ -4,7 +4,7 @@ const jwt=require("jsonwebtoken");
 
 exports.signup = async (req, res) => {
     try {
-        const { name, email, password, mobileNumber } = req.body;
+        const { name, email, password, mobileNumber, role } = req.body;
 
         const user = await Users.findOne({ email });
 
@@ -25,21 +25,22 @@ exports.signup = async (req, res) => {
             })
         }
 
-        const createuser = await Users.create({
-            name, email, password: hashpassword, mobileNumber
+        const NewUser = await Users.create({
+            name, email, password: hashpassword, mobileNumber, role
         })
 
-        return res.json({
+        return res.status(200).json({
             success: true,
-            message: "User created successfully"
+            message: "User created successfully!",
+
         })
 
 
     } catch (error) {
         console.error(error);
-        return res.json({
+        return res.status(400).json({
             success: false,
-            message: "User Can not Resisted,please try again"
+            message: "User Can not Registerd, Please try again!"
         });
 
 
@@ -83,20 +84,20 @@ exports.login = async (req, res) => {
 
 
             const options = {
-                expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
+                expires: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000),
                 httponly: true,
             }
 
-            res.cookie("Mit", token, options).status(200).json({
+            res.cookie("token", token, options).status(200).json({
                 success: true,
                 token,
                 users,
-                message: "user Logged in successfully"
+                message: "User Logged in successfully"
             })
         } else {
             return res.status(401).json({
                 success: false,
-                message: "password incorrect"
+                message: "Password Incorrect"
             })
         }
 
@@ -106,7 +107,7 @@ exports.login = async (req, res) => {
         console.error(error);
         return res.status(500).json({
             success: false,
-            message: "Loggedin fail "
+            message: "Login Failed"
         });
     }
 }

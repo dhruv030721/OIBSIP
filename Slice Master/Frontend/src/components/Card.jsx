@@ -1,5 +1,4 @@
 import React from 'react'
-import Veg from '../../assets/Veg.png'
 function Card({img,logo,name,description,price}) {
     return (
         <div className='flex flex-col justify-center items-center w-[20%] bg-gray-500 rounded-2xl bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-30 drop-shadow-white-xl shadow-2xl border-t-orange-500 border-b-orange-500 border-2 border-x-transparent text-white py-5 hover:-translate-y-3 transition-all

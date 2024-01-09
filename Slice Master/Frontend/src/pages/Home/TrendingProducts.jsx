@@ -1,12 +1,11 @@
 import React from 'react'
-import Card from './Card'
+import Card from '../../components/Card'
 import Veg from '../../assets/Veg.png'
 import NonVeg from '../../assets/NonVeg.png'
 import FarmHouse from '../../assets/pizzaItem/FarmHouse.png'
 import ChikenDominator from '../../assets/pizzaItem/ChickenDominator.png'
 import DoubleChesseMargherita from '../../assets/pizzaItem/DoubleChesseMargherita.png'
 import IndianTandooriPaneer from '../../assets/pizzaItem/IndianTandooriPaneer.png'
-import PepperBarbeque from '../../assets/pizzaItem/PepperBarbeque.png'
 function TrendingProducts() {
 
   const pizzaItem = [

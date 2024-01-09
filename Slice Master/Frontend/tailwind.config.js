@@ -36,6 +36,7 @@ export default {
       },
       dropShadow: {
         '3xl': '0px -1px 20px rgba(249, 115, 22, 0.3)',
+        'orange-0.7': '0px -1px 20px rgba(249, 115, 22, 0.7)',
         'white-3xl': '10px 10px 30px rgba(0, 0, 0, 0.5)',
       },
     },
