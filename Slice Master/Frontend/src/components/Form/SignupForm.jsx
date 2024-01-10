@@ -5,16 +5,16 @@ function SignupForm() {
   return (
     <div className='font-poppins py-10 w-[100%] overflow-y-auto flex flex-col justify-center items-center'>
       <form action="" className='flex flex-col  font-bold w-[60%]'>
-        <label htmlFor="email" className='mt-8'>Name</label>
-        <input type="email" name="email" id="email" className='outline-none border-b-2 border-black text-sm ' />
+        <label htmlFor="name" className='mt-8'>Name</label>
+        <input type="text" name="name" id="name" className='outline-none border-b-2 border-black text-sm ' />
         <label htmlFor="email" className='mt-8'>Email Address</label>
         <input type="email" name="email" id="email" className='outline-none border-b-2 border-black text-sm ' />
-        <label htmlFor="email" className='mt-8'>Password</label>
-        <input type="email" name="email" id="email" className='outline-none border-b-2 border-black text-sm ' />
-        <label htmlFor="email" className='mt-8'>Confirm Password</label>
-        <input type="email" name="email" id="email" className='outline-none border-b-2 border-black text-sm ' />
-        <label htmlFor="email" className='mt-8'>Phone Number</label>
-        <input type="email" name="email" id="email" className='outline-none border-b-2 border-black text-sm ' />
+        <label htmlFor="password" className='mt-8'>Password</label>
+        <input type="password" name="password" id="password" className='outline-none border-b-2 border-black text-sm ' />
+        <label htmlFor="confirmpassword" className='mt-8'>Confirm Password</label>
+        <input type="password" name="confirmpasswod" id="confirmpassword" className='outline-none border-b-2 border-black text-sm ' />
+        <label htmlFor="phonenumber" className='mt-8'>Phone Number</label>
+        <input type="text" name="phonenumber" id="phonenumber" className='outline-none border-b-2 border-black text-sm ' />
       </form>
 
       <div className='flex flex-col items-center justify-around w-[60%] space-y-5 mt-10'>

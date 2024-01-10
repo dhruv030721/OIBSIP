@@ -46,7 +46,7 @@ function Category() {
   return (
     <div className='bg-bg-gray pt-[8vh] font-poppins text-sm '>
       {/* Navigation Bar */}
-      <nav className='h-[6vh] bg-bg-gray fixed flex justify-around w-full bg-transparent bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-30 text-white  before:bg-black before:absolute before:w-full before:h-full before:opacity-40 before:-z-20 z-10  items-center shadow-2xl drop-shadow-2xl'>
+      <nav className='h-[6vh] bg-bg-gray fixed flex justify-around w-full bg-transparent bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-30 text-white  before:bg-black before:absolute before:w-full before:h-full before:opacity-40 before:-z-20  z-10 items-center'>
         {categories.map((item) => (
           <AnchorLink key={item} href="#garlicbreads">
             <NavLink className={({ }) => `relative hover:scale-110 transition-all hover:transition-all outline-none before:bg-orange-500 before:absolute before:w-0 hover:before:transition-all before:top-7 before:left-0 before:h-0.5 hover:before:w-full`}>{item}</NavLink>

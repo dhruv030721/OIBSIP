@@ -1,6 +1,7 @@
-import LoginForm from "./Login & Signup/LoginForm";
-import SignupForm from "./Login & Signup/SignupForm";
-import Template from "./Login & Signup/Template";
+import LoginForm from "./Form/LoginForm";
+import SignupForm from "./Form/SignupForm";
+import Template from "./Form/Template";
+import AdminForm from "./Form/AdminForm";
 
 
-export {LoginForm, SignupForm, Template}
+export {LoginForm, SignupForm, Template, AdminForm}

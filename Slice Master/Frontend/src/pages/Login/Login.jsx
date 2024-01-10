@@ -5,7 +5,7 @@ import { Template, LoginForm } from '../../components/index'
 function Login() {
   return (
     <div>
-      <Template formType={<LoginForm/>} />
+      <Template formType={<LoginForm/>} title="Welcome To Back" />
     </div>
   )
 }
