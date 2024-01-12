@@ -4,7 +4,7 @@ const jwt=require("jsonwebtoken");
 
 exports.signup = async (req, res) => {
     try {
-        const { name, email, password, mobileNumber, role } = req.body;
+        const { name, email, password, contactNumber, role } = req.body;
 
         const user = await Users.findOne({ email });
 
@@ -26,13 +26,12 @@ exports.signup = async (req, res) => {
         }
 
         const NewUser = await Users.create({
-            name, email, password: hashpassword, mobileNumber, role
+            name, email, password: hashpassword, contactNumber, role
         })
 
         return res.status(200).json({
             success: true,
             message: "User created successfully!",
-
         })
 
 
@@ -59,28 +58,28 @@ exports.login = async (req, res) => {
             })
         }
 
-        const users = await Users.findOne({ email });
+        const user = await Users.findOne({ email });
 
-        if (!users) {
+        if (!user) {
             return res.status(401).json({
                 success: false,
-                message: "user is not registed"
+                message: "User is not registered"
             })
         }
 
         const payload = {
-            email: users.email,
-            id: users._id,
+            email: user.email,
+            id: user._id,
         }
 
-        if (await bcrypt.compare(password, users.password)) {
+        if (await bcrypt.compare(password, user.password)) {
             // password matched
             let token = jwt.sign(payload, process.env.JWT_SECRET,
                 {
                     expiresIn: "2h",
                 });
-            users.token = token;
-            users.password = undefined;
+            user.token = token;
+            user.password = undefined;
 
 
             const options = {
@@ -91,7 +90,7 @@ exports.login = async (req, res) => {
             res.cookie("token", token, options).status(200).json({
                 success: true,
                 token,
-                users,
+                user,
                 message: "User Logged in successfully"
             })
         } else {

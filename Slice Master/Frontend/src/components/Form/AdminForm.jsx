@@ -1,13 +1,12 @@
 import React from 'react'
+import {Input} from '../index'
 
 function AdminForm() {
   return (
     <div className='font-poppins py-10 w-[100%] overflow-y-auto flex flex-col justify-center items-center'>
-      <form action="" className='flex flex-col  font-bold w-[60%]'>
-        <label htmlFor="email" className='mt-8'>Email Address</label>
-        <input type="email" name="email" id="email" className='outline-none border-b-2 border-black text-sm ' />
-        <label htmlFor="password" className='mt-8'>Password</label>
-        <input type="password" name="password" id="password" className='outline-none border-b-2 border-black text-sm ' />
+      <form action="" className='flex flex-col gap-8 font-bold w-[60%]'>
+        <Input label = "Email Address" type="email"/>
+        <Input label = "Password" type="password"/>
       </form>
 
       <div className='flex flex-col items-center justify-around w-[60%] space-y-5 mt-10'>
