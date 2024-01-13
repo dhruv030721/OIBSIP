@@ -19,7 +19,9 @@ function SignupForm() {
         loading: 'Processing...',
         success: (response) => {
           console.log(response);
-          navigate('/login');
+          setTimeout(() => {
+            navigate('/login');
+          }, 2000);
           return `${response.message}`;
         },
         error: (error) => {

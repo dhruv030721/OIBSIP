@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import PizzaIcon from '../../assets/wallpaper/pizzaIcon.png'
 import { BsCart3 } from "react-icons/bs";
 import { IoIosContact } from "react-icons/io";
-
+import { useSelector } from 'react-redux';
 
 
 function Header() {
@@ -11,7 +11,18 @@ function Header() {
   const menu = [{ name: "Home", link: '/' }, { name: "Category", link: 'category' }, { name: "About Us", link: 'aboutus' }, { name: "Contact Us", link: 'contactus' },];
 
   const [isLogin, setisLogin] = useState(false);
+  const [profileName, setProfileName] = useState("");
+  const authStatus = useSelector(state => state.auth.status)
+  const userData = useSelector(state => state.auth.userData);
 
+
+  useEffect(() => {
+    if (authStatus) {
+      const name = userData.name;
+      setProfileName(name);
+      setisLogin(true); 
+    }
+  }, [authStatus, userData]);
 
   return (
     <div className='h-[8vh] fixed z-20 flex items-center bg-bg-gray justify-between w-full bg-transparent bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-30  before:bg-black before:absolute before:w-full before:h-full before:opacity-40 before:-z-10 text-white '>
@@ -36,10 +47,13 @@ function Header() {
           {isLogin ? (
             <div className='flex flex-col justify-center items-center hover:drop-shadow-orange-0.7'>
               <IoIosContact size={30} />
-              <Link className='text-[0.7rem]'>Dhruv Godhani</Link>
+              <Link className='text-[0.7rem]'>{profileName}</Link>
             </div>
-          ) : (<Link to={'login'} class="smky-btn3 relative hover:text-black py-2 px-6 after:absolute after:h-1 after:hover:h-[200%] transition-all duration-500 hover:transition-all hover:duration-500 after:transition-all after:duration-500 after:hover:transition-all after:hover:duration-500 overflow-hidden z-20 after:z-[-20] after:bg-orange-500 after:rounded-t-full after:w-full after:bottom-0 after:left-0 text-white">Login</Link>)}
+          ) : (<Link to={'login'} className="smky-btn3 relative hover:text-black py-2 px-6 after:absolute after:h-1 after:hover:h-[200%] transition-all duration-500 hover:transition-all hover:duration-500 after:transition-all after:duration-500 after:hover:transition-all after:hover:duration-500 overflow-hidden z-20 after:z-[-20] after:bg-orange-500 after:rounded-t-full after:w-full after:bottom-0 after:left-0 text-white">Login</Link>)}
         </div>
+
+
+
       </div>
     </div>
   )

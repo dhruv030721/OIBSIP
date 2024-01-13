@@ -1,5 +1,4 @@
 import axios from 'axios'
-import config from '../../config/config'
 
 export class AuthService {
 
@@ -13,9 +12,7 @@ export class AuthService {
 
             const response = await axios.post(`/api/v1/login`, body);
 
-            console.log(response)
-
-            return { data: response.data.user, message: response.data.message, success : true };
+            return { data: response.data.user, message: response.data.message, success: true };
 
         } catch (error) {
             throw error;
@@ -36,7 +33,26 @@ export class AuthService {
 
             const response = await axios.post('/api/v1/signup', body);
 
-            return { data: response.data.user, message: response.data.message, success : true }
+            return { data: response.data.user, message: response.data.message, success: true }
+
+        } catch (error) {
+            throw error;
+        }
+    }
+
+
+    async AdminAuth({ email, password }) {
+        try {
+            const body = {
+                email,
+                password
+            }
+
+            const response = await axios.post('/api/v1/admin/auth', body);
+
+            console.log(response )
+
+            return {data : response.data.user, message: response.data.message}
 
         } catch (error) {
             throw error;

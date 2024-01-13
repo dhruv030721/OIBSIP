@@ -25,7 +25,9 @@ function LoginForm() {
                     success: (response) => {
                         console.log(response);
                         dispatch(login(response.data));
-                        navigate('/');
+                        setTimeout(() => {
+                            navigate('/');
+                        }, 2000);
                         return `${response.message}`;
                     },
                     error: (error) => {
