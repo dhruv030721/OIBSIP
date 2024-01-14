@@ -8,6 +8,7 @@ exports.cloudinaryConnect = () => {
             api_secret : process.env.API_SECRET,
         })
     }
+    
     catch(error){
         console.log(error);
     }

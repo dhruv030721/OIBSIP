@@ -1,5 +1,5 @@
 import React from 'react'
-import { Input, Button, TextArea } from '../../../components/index'
+import { Input, Button, TextArea, Select } from '../../../components/index'
 import { FaPizzaSlice } from "react-icons/fa6"
 import { useForm } from 'react-hook-form'
 import adminService from '../../../services/adminService'
@@ -40,7 +40,6 @@ function AddItem() {
           <div>
             <Input label="Item Name" className='bg-transparent border-white text-white font-light' labelclassName='text-white font-light ' {...register("itemname", {
               required: true,
-              pattern: /^[A-Za-z\s]+$/
             })} />
             {errors.itemname && <p className='text-red-500'>*Please check the item name</p>}
           </div>
@@ -61,8 +60,13 @@ function AddItem() {
             <input className="dark:border-white-400/20 dark:scale-100 transition-all duration-500 ease-in-out dark:hover:scale-110 dark:checked:scale-100 w-5 h-5" type="checkbox" {...register("istrending")}  ></input>
             <label htmlFor="" className='text-white'>isTrending?</label>
           </div>
-          <TextArea className="border-white text-white" label="Description" rows='4' cols='10'/>
-          <Button btnName="Add" className="w-[50%]" onClick={handleSubmit(AddItemHandler)} />
+          <TextArea className="border-white text-white" label="Description" rows='4' cols='10' {...register("description")} />
+          <div>
+            <Select label="Category" options={['Veg Pizza', 'Non Veg Pizza', 'Garlic Breads', 'Beverages']} {...register("category", {
+              required: true,
+            })} />
+          </div>
+            <Button btnName="Add" className="w-[50%]" onClick={handleSubmit(AddItemHandler)} />
         </form>
       </div>
       <Toaster />

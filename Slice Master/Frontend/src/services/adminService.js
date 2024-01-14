@@ -1,18 +1,16 @@
 import axios from 'axios';
 
 export class AdminService {
-  async AddItem({ itemname, price, img, description, istrending }) {
+  async AddItem({ itemname, price, img, description, istrending ,category }) {
     try {
 
-      console.log(img);
       const formData = new FormData();
       formData.append('name', itemname);
       formData.append('price', price);
       formData.append('files', img[0]);
       formData.append('description', description);
       formData.append('isTrending', istrending);
-
-      console.log(formData);
+      formData.append('category', category);   
 
       const response = await axios.post('/api/v1/additem', formData, {
         headers: {

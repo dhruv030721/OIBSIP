@@ -7,5 +7,6 @@ import Protected from "./AuthLayout/AuthLayout";
 import ProtectedAdmin from "./AuthLayout/AdminAuthLayout";
 import Button from "./Button";
 import TextArea from './TextArea'
+import Select from '../components/Select'
 
-export { LoginForm, SignupForm, Template, AdminForm, Input, Protected, ProtectedAdmin, Button,TextArea }
+export { LoginForm, SignupForm, Template, AdminForm, Input, Protected, ProtectedAdmin, Button,TextArea, Select }

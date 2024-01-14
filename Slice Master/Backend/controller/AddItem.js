@@ -8,12 +8,16 @@ function isFileTypeSupported(type, supportedTypes) {
 
 // Function to upload file on Cloudinary
 async function uploadFileToCloudinary(file, folder, quality) {
-    const options = { folder };
+    const options = { folder, };
 
-    if(quality)
-    {
+    if (quality) {
         options.quality = quality;
     }
+
+    // options.resource_type = "auto";
+
+    // Add Cloudinary background removal settings
+    // options.background_removal = "cloudinary_ai";
 
     options.resource_type = "auto";
     return await cloudinary.uploader.upload(file.tempFilePath, options);
@@ -23,18 +27,18 @@ async function uploadFileToCloudinary(file, folder, quality) {
 
 exports.AddItem = async (req, res) => {
     try {
-        const { name, price, isTrending, description } = req.body;
+        const { name, price, isTrending, description, category } = req.body;
 
-        const item = await Item.findOne({name});
+        const item = await Item.findOne({ name });
 
         if (item) {
             res.status(403).json({
                 success: false,
-                message: "Item already exists"
+                message: "Item already exists!"
             })
         }
 
-        const {files} = req.files;
+        const { files } = req.files;
         console.log(files);
 
         // Validation
@@ -45,7 +49,7 @@ exports.AddItem = async (req, res) => {
         if (!isFileTypeSupported(fileType, supportedTypes)) {
             return res.status(400).json({
                 success: false,
-                message: 'File format not supported'
+                message: 'File format not supported!'
             })
         }
 
@@ -55,17 +59,17 @@ exports.AddItem = async (req, res) => {
         console.log(response);
 
 
-        const newItem = await Item.create({name, imgUrl: response.secure_url, price, isTrending, description});
+        const newItem = await Item.create({ name, imgUrl: response.secure_url, price, isTrending, description, category });
 
-        res.status(200).json({
-            success : true,
-            message : "Item Added!",
+        return res.status(200).json({
+            success: true,
+            message: "Item Added!",
         })
 
 
     } catch (error) {
         console.log(error)
-        res.status(400).json({
+        return res.status(400).json({
             success: false,
             message: "Item is not added!"
         })

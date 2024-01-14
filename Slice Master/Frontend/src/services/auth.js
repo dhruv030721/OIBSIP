@@ -50,9 +50,8 @@ export class AuthService {
 
             const response = await axios.post('/api/v1/admin/auth', body);
 
-            console.log(response )
 
-            return {data : response.data.user, message: response.data.message}
+            return { data: response.data.user, message: response.data.message }
 
         } catch (error) {
             throw error;
