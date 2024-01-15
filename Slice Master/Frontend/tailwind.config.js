@@ -28,7 +28,7 @@ export default {
       },
       animation: {
         wiggle: 'wiggle 1.5s ease-in-out infinite',
-        space: 'space 0.5s ease-in-out'
+        space: 'space 0.5s ease-in-out',
       },
       backgroundImage: {
         'pizza-background': "url('./assets/wallpaper/background.png')",
@@ -36,8 +36,7 @@ export default {
       },
       dropShadow: {
         '3xl': '0px -1px 20px rgba(249, 115, 22, 0.3)',
-        'orange-0.7': '0px -1px 20px rgba(249, 115, 22, 0.7)',
-        'white-3xl': '10px 10px 30px rgba(0, 0, 0, 0.5)',
+        'white-4xl': '10px 10px 80px rgba(255, 255, 255, 1)',
       },
     },
   },

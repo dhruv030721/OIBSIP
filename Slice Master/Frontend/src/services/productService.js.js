@@ -5,7 +5,7 @@ export class ProductService {
         try {
             const response = await axios.get('/api/v1/getitems')
 
-            console.log(response)
+            // console.log(response)
 
             return { message: response.data.message, data: response.data.items }
         } catch (error) {

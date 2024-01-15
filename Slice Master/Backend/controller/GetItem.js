@@ -12,11 +12,13 @@ exports.GetItem = async (req, res) => {
             })
         }
 
-        return res.status(200).json({
-            success: true,
-            message: "Data fetched Successfully",
-            items
-        })
+        setTimeout(() => {
+            return res.status(200).json({
+                success: true,
+                message: "Data fetched Successfully",
+                items
+            }) 
+        }, 2000);
 
     } catch (error) {
         console.log(error)

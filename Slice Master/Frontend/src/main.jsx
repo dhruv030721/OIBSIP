@@ -16,7 +16,7 @@ const router = createBrowserRouter(
         <Route index element={<Home />} />
         <Route path='home' element={<Home />} />
         <Route path='category' element={<Category />} />
-        <Route path='cart' element={<Cart />} />
+        <Route path='cart' element={<Protected authentication><Cart /></Protected>} />
         <Route path='aboutus' element={<AboutUs />} />
         <Route path='contactus' element={<ContactUs />} />
       </Route>

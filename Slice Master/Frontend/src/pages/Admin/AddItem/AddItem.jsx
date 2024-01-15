@@ -8,7 +8,7 @@ import toast, { Toaster } from 'react-hot-toast'
 
 function AddItem() {
 
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, handleSubmit, reset,  formState: { errors } } = useForm();
 
   const AddItemHandler = async (data) => {
     try {
@@ -16,6 +16,7 @@ function AddItem() {
         adminService.AddItem(data), {
         loading: 'Processing...',
         success: (response) => {
+          reset()
           return `${response.message}`;
         },
         error: (error) => {
@@ -23,6 +24,7 @@ function AddItem() {
         },
       }
       )
+
     } catch (error) {
       console.log(error);
     }
