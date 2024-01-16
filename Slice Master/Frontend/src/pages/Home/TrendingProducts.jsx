@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Card from '../../components/Product/Card.jsx'
 import Veg from '../../assets/Veg.png'
 import NonVeg from '../../assets/NonVeg.png'
-import { LottieAnimation } from '../../components/index.js'
+import { LottieAnimation, ProductSection } from '../../components/index.js'
 import DeliveryBoy from '../../assets/jsons/deliveryboy.json'
 import { useSelector } from 'react-redux'
 
@@ -11,46 +11,41 @@ function TrendingProducts() {
 
   const [pizzaItem, setPizzaItem] = useState([]);
   const [isLoading, setLoading] = useState(true);
+  const [isError, setError] = useState("");
   const items = useSelector((state) => state.product.items);
+  const error = useSelector((state) => state.error.dataError);
 
   useEffect(() => {
     (async () => {
-      try {
-        if(items == null){
+        if(error){
           setLoading(true)
-        }else{
+          console.log(error);
+          setError(error.message);
+        } 
+        if (items == null) {
+          setLoading(true)
+        } else {
+          setError("");
           setTimeout(() => {
             setPizzaItem(items)
             setLoading(false)
           }, 1000);
         }
-      } catch (error) {
-        console.error("Error fetching items:", error);
-        setError(error);
-        setLoading(true);
-      }
     })();
-  }, [items]);
+  }, [items, error]);
 
 
 
   return (
-    <div className='font-poppins font-black bg-bg-gray p-5 flex flex-col items-center'>
+    <div className='font-poppins font-black bg-bg-gray px-5 flex flex-col items-center before:bg-pizza-background before:min-h-full before:w-full before:absolute before:opacity-20'>
       <div className=' border-b-orange-500 border-2 border-transparent block mb-10 p-5'>
         <h1 className='text-center text-orange-500 text-3xl font-kaushan'>Trending Products</h1>
       </div>
-      {isLoading ?  (<div className='bg-bg-gray pt-[8vh] font-poppins text-lg h-screen flex flex-col justify-center items-center'>
-      <LottieAnimation json={DeliveryBoy} divclassName='w-full' />
-    </div>): (<div className='grid grid-cols-4 gap-16'>
-        {pizzaItem.filter((item) => item.isTrending).map((item) => (
-          <Card key={item.name} img={item.imgUrl} logo={item.category === 'Non Veg Pizza'
-            ? NonVeg
-            : item.category === 'Veg Pizza'
-              ? Veg
-              : null} description={item.description} name={item.name} price={item.price} />
-        ))}
-      </div>) }
-      
+      {isLoading ? (<div className='bg-bg-gray pt-[8vh] font-poppins text-lg max-h-full flex flex-col justify-center items-center'>
+        {isError && <h1 className='text-white text-center text-2xl font-light'>{isError}</h1>}
+        <LottieAnimation json={DeliveryBoy} divclassName='max-w-[60%]' />
+      </div>) :  <ProductSection pizzaItem={pizzaItem.filter((item) => item.isTrending === true)}  />}
+
     </div>
   )
 }

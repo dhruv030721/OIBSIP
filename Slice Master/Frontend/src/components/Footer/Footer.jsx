@@ -9,7 +9,7 @@ import { FaPhoneVolume } from "react-icons/fa6";
 
 function Footer() {
 
-  const menu = [{name : "Home", link : '/'},{name : "Category", link : 'category'},{name : "About Us", link : 'aboutus'},{name : "Contact Us", link : 'contactus'},]
+  const menu = [{name : "Home", link : '/'},{name : "Our Menu", link : 'menu'},{name : "Contact Us", link : 'contactus'},]
 
   return (
     <>

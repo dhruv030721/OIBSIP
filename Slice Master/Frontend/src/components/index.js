@@ -10,7 +10,8 @@ import TextArea from './TextArea'
 import Select from '../components/Select'
 import LottieAnimation from "./LottieAnimation";
 import ProductSection from "./Product/ProductSection";
+import ForgotPasswordForm from "./Form/ForgotPasswordForm";
+import RadioButton from "./RadioButton";
+import BgFillButton from "./BgFillButton";
 
-
-
-export { LoginForm, SignupForm, Template, AdminForm, Input, Protected, ProtectedAdmin, Button,TextArea, Select, LottieAnimation, ProductSection }
+export { LoginForm, SignupForm, Template, AdminForm, Input, Protected, ProtectedAdmin, Button,TextArea, Select, LottieAnimation, ProductSection, ForgotPasswordForm, RadioButton, BgFillButton }

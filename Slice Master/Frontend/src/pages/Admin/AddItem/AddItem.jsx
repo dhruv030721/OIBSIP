@@ -1,6 +1,5 @@
 import React from 'react'
 import { Input, Button, TextArea, Select } from '../../../components/index'
-import { FaPizzaSlice } from "react-icons/fa6"
 import { useForm } from 'react-hook-form'
 import adminService from '../../../services/adminService'
 import toast, { Toaster } from 'react-hot-toast'
@@ -34,7 +33,7 @@ function AddItem() {
   return (
     <div className='w-full'>
       <div className='p-10 flex flex-col items-center'>
-        <h2 className='text-orange-300 font-kaushan text-4xl text-center flex gap-x-5'>Add Item <FaPizzaSlice /></h2>
+        <h2 className='text-orange-300 font-kaushan text-4xl text-center flex gap-x-5'>Add Item </h2>
       </div>
       <div className='min-h-[0.05rem]  bg-gradient-to-r from-bg-gray via-orange-500  to-bg-gray'></div>
       <div className='py-10 px-32'>

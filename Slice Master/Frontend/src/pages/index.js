@@ -3,7 +3,7 @@ import Signup from './Signup/Signup'
 import Home from './Home/Home'
 import ContactUs from './Contact Us/ContactUs'
 import AboutUs from './About Us/AboutUs'
-import Category from './Category/Category'
+import OurMenu from './Our Menu/OurMenu'
 import AdminLogin from './Admin/AdminLogin'
 import AdminLayout from './Admin/AdminLayout'
 import EditProfile from './Admin/EditProfile/EditProfile'
@@ -12,5 +12,8 @@ import Admin from './Admin/Admin'
 import EditItem from './Admin/EditItem/EditItem'
 import AddItem from './Admin/AddItem/AddItem'
 import Cart from './Cart/Cart'
+import EditUserProfile from './User/EditProfile'
+import ForgotPassword from './Login/ForgotPassword'
+import ManageIngredients from './Admin/ManageIngredients/ManageIngredients'
 
-export { Login, Home, Signup, ContactUs, AboutUs, Category, AdminLogin, AdminLayout, EditProfile, Dashboard, Admin, EditItem, AddItem, Cart };
+export { Login, Home, Signup, ContactUs, AboutUs, OurMenu, AdminLogin, AdminLayout, EditProfile, Dashboard, Admin, EditItem, AddItem, Cart, EditUserProfile, ForgotPassword, ManageIngredients };

@@ -5,7 +5,7 @@ import Footer from './components/Footer/Footer'
 import { useDispatch } from 'react-redux'
 import productService from './services/productService.js'
 import { additem } from './store/productSlice'
-
+import { addError } from './store/errorSlice.js'
 
 function App() {
 
@@ -17,7 +17,8 @@ function App() {
         const response = await productService.getitem();
         dispatch(additem(response.data))
       } catch (error) {
-        console.error("Error fetching items:", error);
+        // console.error("Error fetching items:", error);
+        dispatch(addError({message : error.response.statusText, statusCode:  error.response.status}))
       }
     })()
   })

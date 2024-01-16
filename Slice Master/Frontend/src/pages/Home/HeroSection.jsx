@@ -1,8 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function HeroSection() {
   return (
-    <div className='before:bg-home-pizza-background before:absolute before:w-full before:h-screen before:bg-cover before:bg-bottom before:opacity-60 before:bg-no-repeat h-screen after:bg-black after:w-full after:h-screen after:absolute after:opacity-70 before:-z-40 after:-z-30 flex flex-col justify-center items-center text-white font-poppins before:left-0 after:left-0 before:top-0 after:top-0'>
+    <div className='before:bg-home-pizza-background before:absolute before:w-full before:h-screen before:bg-cover before:bg-bottom before:opacity-70 before:bg-no-repeat h-screen after:bg-black after:w-full after:h-screen after:absolute after:opacity-70 before:-z-40 after:-z-30 flex flex-col justify-center items-center text-white font-poppins before:left-0 after:left-0 before:top-0 after:top-0'>
     <div className='w-[40%] '>
       <div className='w-[100%] flex'>
         <h1 className='text-7xl font-semibold font-kaushan text-orange-200'>Life&#160;</h1>
@@ -12,7 +13,7 @@ function HeroSection() {
         <h2 className='text-end mt-10 text-xl font-kaushan'> - FEDERICO FELLINI</h2>
       </div>
     </div>
-    <button className='px-10 py-4 mt-10 border-orange-600 rounded-2xl text-orange-500 font-black bg-transparent shadow-3xl drop-shadow-3xl hover:scale-105 transition-all backdrop-filter backdrop-blur-sm before:bg-orange-500 before:absolute before:w-0  before:h-0 before:top-0 hover:text-black  before:left-0 z-0 before:-z-10 before:rounded-xl hover:before:w-full hover:before:h-full before:transition-all hover:before:transition-all border-y-2'>Menu</button>
+    <Link to='/menu' className='px-10 py-4 mt-10 border-orange-600 rounded-2xl text-orange-500 font-black bg-transparent shadow-3xl drop-shadow-3xl hover:scale-105 transition-all backdrop-filter backdrop-blur-sm before:bg-orange-500 before:absolute before:w-0  before:h-0 before:top-0 hover:text-black  before:left-0 z-0 before:-z-10 before:rounded-xl hover:before:w-full hover:before:h-full before:transition-all hover:before:transition-all border-y-2'>Menu</Link>
   </div>
   )
 }

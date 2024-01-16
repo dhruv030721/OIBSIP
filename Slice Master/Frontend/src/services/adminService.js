@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export class AdminService {
-  async AddItem({ itemname, price, img, description, istrending ,category }) {
+  async AddItem({ itemname, price, img, description, istrending, category }) {
     try {
 
       const formData = new FormData();
@@ -10,7 +10,7 @@ export class AdminService {
       formData.append('files', img[0]);
       formData.append('description', description);
       formData.append('isTrending', istrending);
-      formData.append('category', category);   
+      formData.append('category', category);
 
       const response = await axios.post('/api/v1/additem', formData, {
         headers: {
@@ -18,11 +18,33 @@ export class AdminService {
         },
       });
 
-      return {message : response.data.message}
+      return { message: response.data.message }
     } catch (error) {
       throw error;
     }
   }
+
+  async AddIngredients({ name, quantity, price, category }) {
+    try {
+
+      const body = {
+        name,
+        quantity,
+        price,
+        category
+      };
+
+
+      const response = await axios.post('/api/v1/addingredientitem', body)
+
+      return { message: response.data.message }
+
+    } catch (error) {
+      throw error;
+    }
+  }
+
+
 }
 
 const adminService = new AdminService();

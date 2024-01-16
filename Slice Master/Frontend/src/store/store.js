@@ -1,14 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit"
 import { combineReducers } from "@reduxjs/toolkit"
-import authReducer from '../store/authSlice'
-import adminAuthReducer from '../store/adminAuthSlice'
-import productReducer from "../store/productSlice"
-
+import {authReducer, adminAuthReducer, productReducer, errorReducer}  from './index'
 const store = configureStore({
     reducer : {
         auth : authReducer,
         adminAuth : adminAuthReducer,
-        product : productReducer
+        product : productReducer,
+        error: errorReducer
     }
 })
 

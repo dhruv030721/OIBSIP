@@ -5,20 +5,20 @@ import NonVeg from '../../assets/NonVeg.png'
 
 function ProductSection({
     pizzaItem,
-    className='',
     sectionTitle,
     sectionId,
     sectionIcon,
+    isSection=false,
 }) {
     return (
-        <section className='px-10 ' id={sectionId}>
-            <div className='flex justify-center items-center gap-x-5 drop-shadow-white-4xl'>
+        <section className='px-10 w-full' id={sectionId}>
+            {isSection && (<div className='flex justify-center items-center gap-x-5 drop-shadow-white-4xl'>
                 <h2 className='text-white text-5xl font-kaushan text-center my-8 '>{sectionTitle}</h2>
                 {sectionIcon}
-            </div>
+            </div>)}
             <div className='grid grid-cols-4 gap-16 py-10'>
                 {pizzaItem.map((item) => (
-                    <Card key={item.name} img={item.imgUrl} logo={item.category === 'Non Veg Pizza'
+                    <Card key={item.name} cardKey={item.name} img={item.imgUrl} logo={item.category === 'Non Veg Pizza'
                         ? NonVeg
                         : item.category === 'Veg Pizza'
                             ? Veg

@@ -7,7 +7,7 @@ import { CiPizza } from "react-icons/ci";
 import { GiBeerBottle } from "react-icons/gi";
 
 
-function Category() {
+function OurMenu() {
 
   const categories = [
     {
@@ -27,43 +27,26 @@ function Category() {
   const [isLoading, setLoading] = useState(true);
   const [isError, setError] = useState(null);
   const items = useSelector((state) => state.product.items);
-
+  const error = useSelector((state) => state.error.dataError);
 
   useEffect(() => {
     (async () => {
-      try {
-        if(items == null){
-          setLoading(true)
-        }else{
-          setTimeout(() => {
-            setPizzaItem(items)
-            setLoading(false)
-          }, 1000);
-        }
-      } catch (error) {
-        console.error("Error fetching items:", error);
-        setError(error);
-        setLoading(true);
+      if (error) {
+        setLoading(true)
+        console.log(error);
+        setError(error.message);
+      }
+      if (items == null) {
+        setLoading(true)
+      } else {
+        setError("");
+        setTimeout(() => {
+          setPizzaItem(items)
+          setLoading(false)
+        }, 1000);
       }
     })();
-  }, [items]);
-
-
-  if (isLoading) {
-    return (
-      <div className='bg-bg-gray pt-[8vh] font-poppins text-lg h-screen flex flex-col justify-center items-center'>
-        <LottieAnimation json={DeliveryBoy} divclassName='w-[30%]' />
-      </div>
-    )
-  }
-  if (isError) {
-    return (
-      <div className='bg-bg-gray pt-[8vh] font-poppins text-lg h-screen flex flex-col justify-center items-center'>
-        {isError && <h1 className='text-white text-center text-2xl'>{isError.message}</h1>}
-        <LottieAnimation json={DeliveryBoy} divclassName='w-[30%]' />
-      </div>
-    )
-  }
+  }, [items, error]);
 
 
   return (
@@ -82,13 +65,17 @@ function Category() {
       {/* Items */}
 
       {/* Category Banner */}
-      <div className='mt-20'>
-      <ProductSection pizzaItem={pizzaItem.filter((item) => item.category === "Veg Pizza")}  sectionTitle="Veg Pizza" sectionIcon={<CiPizza size={50} color='green' className='animate-bounce'/>} sectionId="vegpizza"/>
-      <ProductSection pizzaItem={pizzaItem.filter((item) => item.category === "Non Veg Pizza")}  sectionTitle="Non Veg Pizza" sectionIcon={<CiPizza size={50} color='red' className='animate-bounce'/>} sectionId="nonvegpizza" />
-        <ProductSection pizzaItem={pizzaItem.filter((item) => item.category === "Beverages")}  sectionTitle="Beverages" sectionIcon={<GiBeerBottle size={50} color='violet' className='animate-bounce'/>} sectionId="beverages" />
+      {isLoading ? (<div className='bg-bg-gray pt-[8vh] font-poppins text-lg h-screen flex flex-col justify-center items-center'>
+        {isError && <h1 className='text-white text-center text-2xl'>{isError}</h1>}
+        <LottieAnimation json={DeliveryBoy} divclassName='w-[30%]' />
+      </div>) : (<div className='mt-20'>
+        <ProductSection pizzaItem={pizzaItem.filter((item) => item.category === "Veg Pizza")} sectionTitle="Veg Pizza" sectionIcon={<CiPizza size={50} color='green' className='animate-bounce' />} sectionId="vegpizza" isSection="true" />
+        <ProductSection pizzaItem={pizzaItem.filter((item) => item.category === "Non Veg Pizza")} sectionTitle="Non Veg Pizza" sectionIcon={<CiPizza size={50} color='red' className='animate-bounce' />} sectionId="nonvegpizza" isSection="true" />
+        <ProductSection pizzaItem={pizzaItem.filter((item) => item.category === "Beverages")} sectionTitle="Beverages" sectionIcon={<GiBeerBottle size={50} color='violet' className='animate-bounce' />} sectionId="beverages" isSection="true" />
       </div>
+      )}
     </div >
   );
 }
 
-export default Category
+export default OurMenu

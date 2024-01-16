@@ -31,7 +31,7 @@ function LoginForm() {
                         return `${response.message}`;
                     },
                     error: (error) => {
-                        return `${error}`
+                        return `${error.response.data.message}`
                     },
                 }
             );
@@ -65,12 +65,10 @@ function LoginForm() {
             </form>
 
             <div className='flex flex-col items-center justify-around w-[100%] space-y-5 mt-5'>
-                <Link to="/signup" className='text-orange-700 font-black underline text-center'>Don't have an account?</Link>
+            <Link to="/forgotpassword" className='text-orange-700 font-black underline text-center'>Forgot Password?</Link>
                 <h1 className='text-center font-black border-b-2 border-black inline-block'>OR</h1>
-                <div className='flex border-2 rounded-lg bg-gray-100 shadow-2xl w-[100%] justify-center items-center hover:bg-gray-300 hover:transition-all hover:border-black transition-all'>
-                    <FcGoogle size={30} />
-                    <button className='font-black ml-5 h-10 '>Signup with Google</button>
-                </div>
+                <Link to="/signup" className='text-orange-700 font-black underline text-center'>Don't have an account?</Link>
+                
             </div>
             <Toaster />
         </div>
