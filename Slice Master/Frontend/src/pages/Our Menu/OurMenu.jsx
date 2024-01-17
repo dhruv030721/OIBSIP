@@ -5,6 +5,7 @@ import { LottieAnimation, ProductSection } from '../../components/index.js'
 import DeliveryBoy from '../../assets/jsons/deliveryboy.json'
 import { CiPizza } from "react-icons/ci";
 import { GiBeerBottle } from "react-icons/gi";
+import {Toaster} from 'react-hot-toast'
 
 
 function OurMenu() {
@@ -27,7 +28,8 @@ function OurMenu() {
   const [isLoading, setLoading] = useState(true);
   const [isError, setError] = useState(null);
   const items = useSelector((state) => state.product.items);
-  const error = useSelector((state) => state.error.dataError);
+  const error = useSelector((state) => state.error.itemDataError);
+  const ingredients = useSelector((state) => state.product.ingredients)
 
   useEffect(() => {
     (async () => {
@@ -69,11 +71,12 @@ function OurMenu() {
         {isError && <h1 className='text-white text-center text-2xl'>{isError}</h1>}
         <LottieAnimation json={DeliveryBoy} divclassName='w-[30%]' />
       </div>) : (<div className='mt-20'>
-        <ProductSection pizzaItem={pizzaItem.filter((item) => item.category === "Veg Pizza")} sectionTitle="Veg Pizza" sectionIcon={<CiPizza size={50} color='green' className='animate-bounce' />} sectionId="vegpizza" isSection="true" />
-        <ProductSection pizzaItem={pizzaItem.filter((item) => item.category === "Non Veg Pizza")} sectionTitle="Non Veg Pizza" sectionIcon={<CiPizza size={50} color='red' className='animate-bounce' />} sectionId="nonvegpizza" isSection="true" />
-        <ProductSection pizzaItem={pizzaItem.filter((item) => item.category === "Beverages")} sectionTitle="Beverages" sectionIcon={<GiBeerBottle size={50} color='violet' className='animate-bounce' />} sectionId="beverages" isSection="true" />
+        <ProductSection pizzaItem={pizzaItem.filter((item) => item.category === "Veg Pizza")} sectionTitle="Veg Pizza" sectionIcon={<CiPizza size={50} color='green' className='animate-bounce' />} sectionId="vegpizza" isSection="true" Ingredients={ingredients}/>
+        <ProductSection pizzaItem={pizzaItem.filter((item) => item.category === "Non Veg Pizza")} sectionTitle="Non Veg Pizza" sectionIcon={<CiPizza size={50} color='red' className='animate-bounce' />} sectionId="nonvegpizza" isSection="true" Ingredients={ingredients}/>
+        <ProductSection pizzaItem={pizzaItem.filter((item) => item.category === "Beverages")} sectionTitle="Beverages" sectionIcon={<GiBeerBottle size={50} color='violet' className='animate-bounce' />} sectionId="beverages" isSection="true" Ingredients={ingredients}/>
       </div>
       )}
+      <Toaster />
     </div >
   );
 }

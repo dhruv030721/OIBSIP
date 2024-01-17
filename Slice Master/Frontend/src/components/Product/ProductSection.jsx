@@ -5,6 +5,7 @@ import NonVeg from '../../assets/NonVeg.png'
 
 function ProductSection({
     pizzaItem,
+    Ingredients,
     sectionTitle,
     sectionId,
     sectionIcon,
@@ -18,7 +19,7 @@ function ProductSection({
             </div>)}
             <div className='grid grid-cols-4 gap-16 py-10'>
                 {pizzaItem.map((item) => (
-                    <Card key={item.name} cardKey={item.name} img={item.imgUrl} logo={item.category === 'Non Veg Pizza'
+                    <Card Ingredients={Ingredients} key={item.name} cardKey={item.name} img={item.imgUrl} logo={item.category === 'Non Veg Pizza'
                         ? NonVeg
                         : item.category === 'Veg Pizza'
                             ? Veg

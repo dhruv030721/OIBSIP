@@ -14,8 +14,16 @@ const MenuItem = new mongoose.Schema({
         required : true,
     },
     price: {
-        type : Number,
-        required : true,
+        regular : {
+            type : Number,
+            required : true
+        },
+        medium : {
+            type : Number,
+        },
+        large : {
+            type: Number,
+        }
     },
     isTrending: {
         type: Boolean,

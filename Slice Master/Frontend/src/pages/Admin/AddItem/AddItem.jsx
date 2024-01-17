@@ -32,11 +32,11 @@ function AddItem() {
 
   return (
     <div className='w-full'>
-      <div className='p-10 flex flex-col items-center'>
-        <h2 className='text-orange-300 font-kaushan text-4xl text-center flex gap-x-5'>Add Item </h2>
+      <div className='px-10 py-5 flex flex-col items-center'>
+        <h2 className='text-orange-300 font-kaushan text-4xl text-center flex'>Add Item </h2>
       </div>
       <div className='min-h-[0.05rem]  bg-gradient-to-r from-bg-gray via-orange-500  to-bg-gray'></div>
-      <div className='py-10 px-32'>
+      <div className='py-5 px-32'>
         <form className='grid grid-cols-2 gap-16 items-start' onSubmit={handleSubmit(AddItemHandler)}>
           <div>
             <Input label="Item Name" className='bg-transparent border-white text-white font-light' labelclassName='text-white font-light ' {...register("itemname", {
@@ -44,9 +44,15 @@ function AddItem() {
             })} />
             {errors.itemname && <p className='text-red-500'>*Please check the item name</p>}
           </div>
-          <div>
-            <Input label="Price" className='bg-transparent border-white text-white' labelclassName='text-white font-light' {...register("price", {
+          <div className='flex flex-col gap-y-3'>
+            <Input label="Price" placeholder="Regular Size" className='bg-transparent border-white text-white' labelclassName='text-white font-light' {...register("regularprice", {
               required: true,
+              pattern: /^[0-9]+$/,
+            })} />
+            <Input placeholder="Medium Size" className='bg-transparent border-white text-white' labelclassName='text-white font-light' {...register("medimumprice", {
+              pattern: /^[0-9]+$/,
+            })} />
+            <Input placeholder="Large Size" className='bg-transparent border-white text-white' labelclassName='text-white font-light' {...register("largeprice", {
               pattern: /^[0-9]+$/,
             })} />
             {errors.price && <p className='text-red-500'>*Please check the price field</p>}
@@ -63,7 +69,7 @@ function AddItem() {
           </div>
           <TextArea className="border-white text-white" label="Description" rows='4' cols='10' {...register("description")} />
           <div>
-            <Select label="Category" options={['Veg Pizza', 'Non Veg Pizza', 'Garlic Breads', 'Beverages']} {...register("category", {
+            <Select label="Category" options={['Veg Pizza', 'Non Veg Pizza', 'Beverages']} {...register("category", {
               required: true,
             })} />
           </div>

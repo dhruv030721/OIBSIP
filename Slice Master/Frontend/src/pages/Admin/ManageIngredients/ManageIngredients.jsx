@@ -1,8 +1,8 @@
 import React from 'react'
 import { Input, Select, Button } from '../../../components'
 import { useForm } from 'react-hook-form'
-import adminService from '../../../services/adminService';
 import toast , {Toaster} from 'react-hot-toast'
+import adminService from '../../../services/productService.js';
 
 function ManageIngredients() {
 

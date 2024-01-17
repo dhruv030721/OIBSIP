@@ -1,7 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import Card from '../../components/Product/Card.jsx'
-import Veg from '../../assets/Veg.png'
-import NonVeg from '../../assets/NonVeg.png'
 import { LottieAnimation, ProductSection } from '../../components/index.js'
 import DeliveryBoy from '../../assets/jsons/deliveryboy.json'
 import { useSelector } from 'react-redux'
@@ -14,23 +11,24 @@ function TrendingProducts() {
   const [isError, setError] = useState("");
   const items = useSelector((state) => state.product.items);
   const error = useSelector((state) => state.error.dataError);
+  const ingredients = useSelector((state) => state.product.ingredients)
 
   useEffect(() => {
     (async () => {
-        if(error){
-          setLoading(true)
-          console.log(error);
-          setError(error.message);
-        } 
-        if (items == null) {
-          setLoading(true)
-        } else {
-          setError("");
-          setTimeout(() => {
-            setPizzaItem(items)
-            setLoading(false)
-          }, 1000);
-        }
+      if (error) {
+        setLoading(true)
+        console.log(error);
+        setError(error.message);
+      }
+      if (items == null) {
+        setLoading(true)
+      } else {
+        setError("");
+        setTimeout(() => {
+          setPizzaItem(items)
+          setLoading(false)
+        }, 1000);
+      }
     })();
   }, [items, error]);
 
@@ -44,7 +42,7 @@ function TrendingProducts() {
       {isLoading ? (<div className='bg-bg-gray pt-[8vh] font-poppins text-lg max-h-full flex flex-col justify-center items-center'>
         {isError && <h1 className='text-white text-center text-2xl font-light'>{isError}</h1>}
         <LottieAnimation json={DeliveryBoy} divclassName='max-w-[60%]' />
-      </div>) :  <ProductSection pizzaItem={pizzaItem.filter((item) => item.isTrending === true)}  />}
+      </div>) : <ProductSection pizzaItem={pizzaItem.filter((item) => item.isTrending === true)} Ingredients={ingredients} />}
 
     </div>
   )

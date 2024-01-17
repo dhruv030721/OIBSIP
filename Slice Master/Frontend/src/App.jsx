@@ -4,23 +4,32 @@ import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 import { useDispatch } from 'react-redux'
 import productService from './services/productService.js'
-import { additem } from './store/productSlice'
-import { addError } from './store/errorSlice.js'
+import { additem, addIngredients } from './store/productSlice'
+import { addIngredientDataError, addItemDataError } from './store/errorSlice.js'
 
 function App() {
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async () => {
-      try{
-        const response = await productService.getitem();
-        dispatch(additem(response.data))
+    ;(async () => {
+      try {
+        const ItemResponse = await productService.GetItem();
+        dispatch(additem(ItemResponse.data))
       } catch (error) {
-        // console.error("Error fetching items:", error);
-        dispatch(addError({message : error.response.statusText, statusCode:  error.response.status}))
+        console.error("Error fetching items:", error);
+        dispatch(addItemDataError({ message: error.ItemResponse.statusText, statusCode: error.ItemResponse.status }))
       }
     })()
+      ;(async () => {
+        try {
+          const IngredientsResponse = await productService.GetIngredients();
+          dispatch(addIngredients(IngredientsResponse.data))
+        } catch (error) {
+          console.error("Error fetching items:", error);
+          dispatch(addIngredientDataError({ message: error.IngredientsResponse.statusText, statusCode: error.IngredientsResponse.status }))
+        }
+      })()
   })
 
 
