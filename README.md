@@ -27,27 +27,28 @@ Slice Master is a Pizza Shop Management Website developed using the MERN Stack. 
 ### Project Image:
 
 ## Login Page
-![Slice Master Preview](https://github.com/dhruv030721/OIBSIP/blob/main/Slice%20Master/Website%20Images/loginpage.png)
+![Login Page](https://github.com/dhruv030721/OIBSIP/blob/main/Slice%20Master/Website%20Images/loginpage.png)
 
 ## Signup Page
-![](https://github.com/dhruv030721/OIBSIP/blob/main/Slice%20Master/Website%20Images/signuppage.png)
+![Signup Page](https://res.cloudinary.com/dbmy60hnl/image/upload/v1705559705/Practice/Webpage%20Img/signuppage.png)
 
 ## Home Page
-![](https://github.com/dhruv030721/OIBSIP/blob/main/Slice%20Master/Website%20Images/herosection.png)
+![Home Page](https://res.cloudinary.com/dbmy60hnl/image/upload/v1705559710/Practice/Webpage%20Img/homepage.png)
+![Trending Products](https://res.cloudinary.com/dbmy60hnl/image/upload/v1705559695/Practice/Webpage%20Img/trendingproducts.png)
 
 ## Menu Page
-![](https://github.com/dhruv030721/OIBSIP/blob/main/Slice%20Master/Website%20Images/vegmenu.png)
-![](https://github.com/dhruv030721/OIBSIP/blob/main/Slice%20Master/Website%20Images/bevegragesmenu.png)
+![Veg Pizza](https://res.cloudinary.com/dbmy60hnl/image/upload/v1705559710/Practice/Webpage%20Img/vegpizza.png)
+![Beverages](https://res.cloudinary.com/dbmy60hnl/image/upload/v1705559710/Practice/Webpage%20Img/beverages.png)
 
 ## Contact Page
-![](https://github.com/dhruv030721/OIBSIP/blob/main/Slice%20Master/Website%20Images/contactus.png)
+![Contact](https://res.cloudinary.com/dbmy60hnl/image/upload/v1705559710/Practice/Webpage%20Img/contact.png)
 
 ## Admin Login
-![](https://github.com/dhruv030721/OIBSIP/blob/main/Slice%20Master/Website%20Images/admin.png)
+![Admin Login](https://res.cloudinary.com/dbmy60hnl/image/upload/v1705559710/Practice/Webpage%20Img/adminlogin.png)
 
 ## Admin Add item page
-![](https://github.com/dhruv030721/OIBSIP/blob/main/Slice%20Master/Website%20Images/additem.png)
+![Add Item](https://res.cloudinary.com/dbmy60hnl/image/upload/v1705559710/Practice/Webpage%20Img/additem.png)
 
 ## Admin Manage Ingredients page
-![](https://github.com/dhruv030721/OIBSIP/blob/main/Slice%20Master/Website%20Images/manageingredients.png)
+![Manage Ingredients](https://res.cloudinary.com/dbmy60hnl/image/upload/v1705559710/Practice/Webpage%20Img/manageingredients.png)
 
