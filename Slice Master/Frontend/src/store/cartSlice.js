@@ -52,12 +52,9 @@ const cartSlice = createSlice({
 
                 const newItem = {
                     name: action.payload.name,
-                    price: action.payload.price,
                     size: size,
-                    sizePrice: sizePrice,
                     crust: crust,
                     topping: topping,
-                    toppingPrice: toppingPrice,
                     img: action.payload.img,
                     category: action.payload.category,
                     totalPrice : totalprice
@@ -67,11 +64,34 @@ const cartSlice = createSlice({
             }
 
         },
+
+        removeCartItem : (state, action) => {
+
+
+            const name = action.payload
+
+            const existingItemIndex = state.cartItem.findIndex(
+                (item) => item.item.name === name
+            );
+
+            if (existingItemIndex !== -1) {
+                if (state.cartItem[existingItemIndex].quantity === 1) {
+                    state.cartItem.splice(existingItemIndex, 1);
+                } else {
+                    state.cartItem[existingItemIndex].quantity -= 1;
+                }
+        
+                state.cartItemLength--;
+            }
+
+        }
+
+
     }
 })
 
 
-export const { addCartItem } = cartSlice.actions;
+export const { addCartItem, removeCartItem } = cartSlice.actions;
 
 
 export default cartSlice.reducer;

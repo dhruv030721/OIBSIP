@@ -3,7 +3,8 @@ import { useSelector } from 'react-redux'
 import DeliveryBoy from '../../assets/jsons/deliveryboy.json'
 import { LottieAnimation } from '../../components'
 import { CiShoppingCart } from "react-icons/ci";
-import CartItems from './CartItems';
+import CartCard from './CartCard';
+import Invoice from './Invoice';
 
 
 function Cart() {
@@ -13,7 +14,7 @@ function Cart() {
   if (cartData.length == 0) {
     return (
       <div className='min-h-screen bg-bg-gray text-orange-500 flex flex-col items-center justify-center font-poppins text-4xl'>
-        <h2 className='font-bold drop-shadow-3xl'>Not Item in Cart!</h2>
+        <h2 className='font-bold drop-shadow-3xl'>No Item in Cart!</h2>
         <LottieAnimation json={DeliveryBoy} divclassName='max-w-[30%]' />
       </div>
     )
@@ -27,11 +28,17 @@ function Cart() {
           <CiShoppingCart color='white' size={40}/>
         </div>
         <div className='w-full mt-3 h-[0.1px] bg-orange-500'></div>
-        <CartItems cartData={cartData} />
+        {
+          cartData.map((data) => (
+            <CartCard key={data.item.name} name={data.item.name} crust={data.item.crust} topping={data.item.topping} size={data.item.size} category={data.item.category} 
+              img={data.item.img} quantity={data.quantity} price={data.item.totalPrice}
+            />
+          ))
+        }
          </div>
       <div className='min-h-screen w-0.5 bg-orange-500 mx-5 rounded-full'></div>
-      <div>
-
+      <div className='min-h-screen w-[70%]'>
+        <Invoice/>
       </div>
     </div>
   )
