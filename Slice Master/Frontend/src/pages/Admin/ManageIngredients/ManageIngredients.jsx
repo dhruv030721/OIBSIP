@@ -35,7 +35,7 @@ function ManageIngredients() {
     <div className='w-full'>
       <div className='p-10 flex flex-col'>
         <h2 className='text-orange-300 font-kaushan text-4xl text-center'>Manage Ingredients</h2>
-        <div className='min-h-[0.05rem] bg-gradient-to-r from-bg-gray via-orange-500  to-bg-gray mt-5'></div>
+        <div className='min-h-[1px] bg-gradient-to-r from-bg-gray via-orange-500  to-bg-gray mt-5'></div>
       </div>
       <div className=''>
         <form className='grid grid-cols-2 gap-16 items-start px-32' onSubmit={handleSubmit(addIngredientsHandler)}>

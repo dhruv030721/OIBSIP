@@ -35,7 +35,7 @@ function AddItem() {
       <div className='px-10 py-5 flex flex-col items-center'>
         <h2 className='text-orange-300 font-kaushan text-4xl text-center flex'>Add Item </h2>
       </div>
-      <div className='min-h-[0.05rem]  bg-gradient-to-r from-bg-gray via-orange-500  to-bg-gray'></div>
+      <div className='min-h-[1px]  bg-gradient-to-r from-bg-gray via-orange-500  to-bg-gray'></div>
       <div className='py-5 px-32'>
         <form className='grid grid-cols-2 gap-16 items-start' onSubmit={handleSubmit(AddItemHandler)}>
           <div>

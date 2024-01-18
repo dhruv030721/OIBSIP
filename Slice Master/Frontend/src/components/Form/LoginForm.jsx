@@ -23,7 +23,7 @@ function LoginForm() {
                 {
                     loading: 'Processing...',
                     success: (response) => {
-                        console.log(response);
+                        // console.log(response);
                         dispatch(login(response.data));
                         setTimeout(() => {
                             navigate('/');

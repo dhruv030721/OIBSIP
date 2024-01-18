@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux'
 import productService from './services/productService.js'
 import { additem, addIngredients } from './store/productSlice'
 import { addIngredientDataError, addItemDataError } from './store/errorSlice.js'
+import {Toaster} from 'react-hot-toast'
 
 function App() {
 
@@ -43,6 +44,7 @@ function App() {
         <div className='bg-bg-gray'>
           <Footer />
         </div>
+        <Toaster/>
       </div>
     </>
   )

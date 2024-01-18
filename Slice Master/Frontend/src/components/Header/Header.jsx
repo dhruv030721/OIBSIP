@@ -8,14 +8,14 @@ import { useSelector } from 'react-redux';
 
 function Header() {
 
-  const menu = [{ name: "Home", link: '/' }, { name: "Our Menu", link: 'menu' },  { name: "Contact Us", link: 'contactus' },];
+  const menu = [{ name: "Home", link: '/' }, { name: "Our Menu", link: 'menu' }, { name: "Contact Us", link: 'contactus' },];
 
   const [isLogin, setisLogin] = useState(false);
   const [profileName, setProfileName] = useState("");
   const [itemLength, setItemLength] = useState(0);
   const authStatus = useSelector(state => state.auth.status)
   const userData = useSelector(state => state.auth.userData);
-  const item = useSelector(state => state.cart.cartItem);
+  const item = useSelector(state => state.cart.cartItemLength);
 
 
   useEffect(() => {
@@ -23,21 +23,16 @@ function Header() {
       const name = userData.name;
       setProfileName(name);
       setisLogin(true);
-      console.log(itemLength)
     }
-    if(item == null){
-      setItemLength(0);
-    } else{
-      setItemLength(item.length)
-    }
-  }, [authStatus, userData , item, useSelector]);
+      setItemLength(item)
+  }, [authStatus, userData, item, useSelector]);
 
   return (
     <div className='h-[8vh] fixed z-20 flex items-center bg-bg-gray justify-between w-full bg-transparent bg-clip-padding backdrop-filter backdrop-blur-sm before:bg-black before:absolute before:w-full before:h-full before:opacity-70 before:-z-10 text-white '>
-      <div className='flex items-center ml-5'>
+      <div className='flex items-center ml-5 space-x-2'>
         {/* Logo */}
-        <h1 className='logo-text font-parisienne font-black text-3xl first-letter:text-orange-500 '>Slice&#160;</h1>
-        <h1 className='logo-text font-parisienne font-black text-3xl first-letter:text-red-500 '>Master</h1>
+        <h1 className='logo-text font-kaushan font-black text-3xl first-letter:text-orange-500 '>Slice&#160;</h1>
+        <h1 className='logo-text font-kaushan font-black text-3xl first-letter:text-red-500 '>Master</h1>
         <img src={PizzaIcon} alt="" className='w-10 h-10 animate-wiggle drop-shadow-3xl' />
       </div>
       <nav className='flex justify-center'>
@@ -51,9 +46,10 @@ function Header() {
       <div>
         {/* cart and login  */}
         <div className='flex items-center mr-10 font-poppins font-bold justify-center'>
-          <div before={itemLength} className={`${itemLength == 0 ? "before:content-[]" : "before:content-[attr(before)]"} before:bg-orange-500 relative before:absolute before:px-2 before:rounded-full before:bottom-3 before:left-3 hover:scale-110 transition-all z-10 before:z-20`}>
-            <Link to='/cart'><BsCart3 color='white' size={25} className={`mr-5 hover:drop-shadow-3xl `} /></Link>
-          </div>
+          <Link to="/cart">
+            <div before={itemLength} className={`${itemLength == 0 ? "before:content-[]" : "before:content-[attr(before)]"} before:bg-orange-500  before:w-8 relative before:h-8 text-center before:absolute before:flex  before:items-center before:justify-center box-border before:rounded-full before:bottom-2  before:left-3 hover:scale-110 transition-all z-10 before:z-20`}>
+              <BsCart3 color='white' size={25} className={`mr-5 hover:drop-shadow-3xl `} />
+            </div></Link>
           {isLogin ? (
             <div className='relative group'>
               <div className='flex flex-col justify-center items-center hover:drop-shadow-3xl'>

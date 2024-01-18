@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit"
-import ProductModel from "../model/ProductModel";
 
 const initialState =
 {
-    cartItem: []
+    cartItem: [],
+    cartItemLength: 0
 };
 
 const cartSlice = createSlice({
@@ -12,16 +12,60 @@ const cartSlice = createSlice({
     reducers: {
         addCartItem: (state, action) => {
 
-            const newItem = new ProductModel(
-                action.payload.name,
-                action.payload.price,
-                action.payload.size,
-                action.payload.crust,
-                action.payload.topping,
-                action.payload.img
-            )
+            if (action.payload.category == "Beverages") {
 
-            state.cartItem.push(newItem)
+                const newItem = {
+                    name: action.payload.name,
+                    totalPrice: action.payload.price.regular,
+                    img: action.payload.img,
+                    category: action.payload.category
+                }
+
+                const existingItemIndex = state.cartItem.findIndex(
+                    (item) => item.item.name === newItem.name
+                );
+
+                if (existingItemIndex !== -1) {
+                    state.cartItem[existingItemIndex].quantity += 1;
+                } else {
+                    state.cartItem.push({ item: newItem, quantity: 1 });
+                }
+
+                state.cartItemLength++;
+
+            } else {
+                let size = action.payload.size;
+                size = size.split('-');
+                let sizePrice = parseFloat(size[1].trim())
+                size = size[0].trim();
+
+                let topping = action.payload.topping;
+                topping = topping.split('-');
+                let toppingPrice = parseFloat(topping[1].trim())
+                topping = topping[0].trim()
+
+                let crust = action.payload.crust;
+                crust = crust.split('-');
+                crust = crust[0].trim()
+
+                let totalprice = sizePrice + toppingPrice;
+
+                const newItem = {
+                    name: action.payload.name,
+                    price: action.payload.price,
+                    size: size,
+                    sizePrice: sizePrice,
+                    crust: crust,
+                    topping: topping,
+                    toppingPrice: toppingPrice,
+                    img: action.payload.img,
+                    category: action.payload.category,
+                    totalPrice : totalprice
+                }
+                state.cartItem.push({ item: newItem, quantity: 1 })
+                state.cartItemLength++;
+            }
+
         },
     }
 })

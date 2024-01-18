@@ -5,7 +5,6 @@ import { LottieAnimation, ProductSection } from '../../components/index.js'
 import DeliveryBoy from '../../assets/jsons/deliveryboy.json'
 import { CiPizza } from "react-icons/ci";
 import { GiBeerBottle } from "react-icons/gi";
-import {Toaster} from 'react-hot-toast'
 
 
 function OurMenu() {
@@ -76,7 +75,6 @@ function OurMenu() {
         <ProductSection pizzaItem={pizzaItem.filter((item) => item.category === "Beverages")} sectionTitle="Beverages" sectionIcon={<GiBeerBottle size={50} color='violet' className='animate-bounce' />} sectionId="beverages" isSection="true" Ingredients={ingredients}/>
       </div>
       )}
-      <Toaster />
     </div >
   );
 }

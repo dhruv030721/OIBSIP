@@ -23,7 +23,7 @@ function ProductSection({
                         ? NonVeg
                         : item.category === 'Veg Pizza'
                             ? Veg
-                            : null} description={item.description} name={item.name} price={item.price} />
+                            : null} description={item.description} name={item.name} price={item.price} category={item.category} />
                 ))}
             </div>
         </section>
