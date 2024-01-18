@@ -15,7 +15,7 @@ function Header() {
   const [itemLength, setItemLength] = useState(0);
   const authStatus = useSelector(state => state.auth.status)
   const userData = useSelector(state => state.auth.userData);
-  const item = useSelector(state => state.product.items);
+  const item = useSelector(state => state.cart.cartItem);
 
 
   useEffect(() => {
