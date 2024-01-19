@@ -3,6 +3,7 @@ import { Input, Button, TextArea, Select } from '../../../components/index'
 import { useForm } from 'react-hook-form'
 import adminService from '../../../services/adminService'
 import toast, { Toaster } from 'react-hot-toast'
+import FileInput from '../../../components/FileInput'
 
 
 function AddItem() {
@@ -58,7 +59,7 @@ function AddItem() {
             {errors.price && <p className='text-red-500'>*Please check the price field</p>}
           </div>
           <div>
-            <Input label="Image" className='bg-transparent border-none rounded-2xl border-white text-white' labelclassName='text-white font-light' type="file" {...register("img", {
+            <FileInput labelname="Upload Image here" type="file" {...register("img", {
               required: true
             })} />
             {errors.img && <p className='text-red-500'>*Upload Image</p>}

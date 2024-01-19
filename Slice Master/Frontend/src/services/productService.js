@@ -26,6 +26,19 @@ export class ProductService {
         }
     }
 
+    async addOrder({orderId,name,orderItem,amount,date,time}){
+        try {
+
+            const body = {orderId,name,orderItem,amount,date,time};
+
+            const response = await axios.post('/api/v1/addOrder',body)
+
+            return {message : response.data.message}
+
+        } catch (error) {
+            throw error;
+        }
+    }
 }
 
 const productService = new ProductService();

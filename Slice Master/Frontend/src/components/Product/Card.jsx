@@ -24,7 +24,6 @@ function Card({ img, logo, name, description, price, cardKey, Ingredients, categ
 
   const crustValueHandler = (event) => {
     setCrustValue(event.target.value);
-    console.log(event.target.value)
   }
   const sizeValueHandler = (event) => {
     setSizeValue(event.target.value);
