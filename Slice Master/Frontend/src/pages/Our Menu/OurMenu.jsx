@@ -67,7 +67,7 @@ function OurMenu() {
 
       {/* Category Banner */}
       {isLoading ? (<div className='bg-bg-gray pt-[8vh] font-poppins text-lg h-screen flex flex-col justify-center items-center'>
-        {isError && <h1 className='text-white text-center text-2xl'>{isError}</h1>}
+        {isError && <h1 className='text-orange-500 text-center text-4xl font-bold drop-shadow-3xl'>{isError}</h1>}
         <LottieAnimation json={DeliveryBoy} divclassName='w-[30%]' />
       </div>) : (<div className='mt-20'>
         <ProductSection pizzaItem={pizzaItem.filter((item) => item.category === "Veg Pizza")} sectionTitle="Veg Pizza" sectionIcon={<CiPizza size={50} color='green' className='animate-bounce' />} sectionId="vegpizza" isSection="true" Ingredients={ingredients}/>

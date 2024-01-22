@@ -25,7 +25,7 @@ function SignupForm() {
           return `${response.message}`;
         },
         error: (error) => {
-          return `${error}`
+          return `${error.response.statusText}`
         },
       }
       )

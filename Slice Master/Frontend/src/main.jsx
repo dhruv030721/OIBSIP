@@ -1,11 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
-import { Route, Router, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
+import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
 import App from './App.jsx'
-import { Login, Home, Signup, ContactUs, OurMenu, AdminLogin, AdminLayout, EditUserProfile, Dashboard, Admin, EditItem, AddItem, Cart, EditProfile, ForgotPassword, ManageIngredients } from './pages/index'
+import { Login, Home, Signup, ContactUs, OurMenu, AdminLogin, AdminLayout, EditUserProfile, Dashboard, Admin, EditItem, AddItem, Cart, ForgotPassword, ManageIngredients } from './pages/index'
 import { Provider } from 'react-redux'
-import store from './store/store.js'
+import {store} from './store/store.js'
 import { Protected, ProtectedAdmin } from './components/index.js'
 
 
@@ -27,7 +27,6 @@ const router = createBrowserRouter(
         <Route index element={<AdminLogin />} />
         <Route path='' element={<ProtectedAdmin authentication><AdminLayout /></ProtectedAdmin>}>
           <Route path='dashboard' element={<ProtectedAdmin authentication><Dashboard /></ProtectedAdmin>} />
-          <Route path='edit-profile' element={<ProtectedAdmin authentication><EditProfile /></ProtectedAdmin>} />
           <Route path='add-item' element={<ProtectedAdmin authentication><AddItem /></ProtectedAdmin>} />
           <Route path='edit-item' element={<ProtectedAdmin authentication><EditItem /></ProtectedAdmin>} />
           <Route path='manage-ingredients' element={<ProtectedAdmin authentication><ManageIngredients /></ProtectedAdmin>} />

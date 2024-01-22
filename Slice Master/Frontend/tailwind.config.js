@@ -7,7 +7,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        'bg-gray': '#222324'
+        'bg-gray': '#222324',
+        'dark-blue': '#141516'
       },
       keyframes: {
         wiggle: {
@@ -20,6 +21,11 @@ export default {
           '75%' : {transform : 'translate(-10px, 30px)', opacity : 0},
           '100%' : {transform : 'translate(0px, 0px)', opacity : 1},
         },
+        rotate: {
+          '0% ': { transform: 'rotate(0deg)' },
+          '50%': { transform: 'rotate(360deg)'},
+          '100%' : {transform : 'rotate(0deg)'},
+        },
       },
       fontFamily: {
         'parisienne': ['Parisienne'],
@@ -29,6 +35,7 @@ export default {
       animation: {
         wiggle: 'wiggle 1.5s ease-in-out infinite',
         space: 'space 0.5s ease-in-out',
+        rotate: 'rotate 2s linear'
       },
       backgroundImage: {
         'pizza-background': "url('./assets/wallpaper/background.png')",

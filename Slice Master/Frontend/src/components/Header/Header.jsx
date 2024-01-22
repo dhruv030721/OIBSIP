@@ -3,7 +3,8 @@ import { NavLink, Link } from 'react-router-dom'
 import PizzaIcon from '../../assets/wallpaper/pizzaIcon.png'
 import { BsCart3 } from "react-icons/bs";
 import { IoIosContact } from "react-icons/io";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../store/authSlice'
 
 
 function Header() {
@@ -16,6 +17,12 @@ function Header() {
   const authStatus = useSelector(state => state.auth.status)
   const userData = useSelector(state => state.auth.userData);
   const item = useSelector(state => state.cart.cartItemLength);
+  const dispatch = useDispatch();
+
+  const LogoutHandler = () => {
+    dispatch(logout())
+    setisLogin(false)
+  }
 
 
   useEffect(() => {
@@ -24,8 +31,8 @@ function Header() {
       setProfileName(name);
       setisLogin(true);
     }
-      setItemLength(item)
-  }, [authStatus, userData, item, useSelector]);
+    setItemLength(item)
+  }, [authStatus, userData, item, useSelector, LogoutHandler]);
 
   return (
     <div className='h-[8vh] fixed z-20 flex items-center bg-bg-gray justify-between w-full bg-transparent bg-clip-padding backdrop-filter backdrop-blur-sm before:bg-black before:absolute before:w-full before:h-full before:opacity-70 before:-z-10 text-white '>
@@ -59,7 +66,7 @@ function Header() {
               <div className='absolute text-white bg-black rounded-lg before:rounded-lg top-14 text-[0.8rem] py-5  w-[130%] px-2 border-y-2 border-orange-500 opacity-0 transition-all bg-transparent bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-30  before:bg-black before:absolute before:w-full before:h-full before:opacity-40 before:-z-10 before:top-0 before:left-0 -translate-y-10 group-hover:translate-y-0 group-hover:opacity-100'>
                 <ul className='flex flex-col items-center gap-y-5 text-center'>
                   <li className=' before:bg-orange-500 5 hover:before:w-0 hover:scale-110 transition-all '><Link to='edit-userprofile' className=''>Edit Profile</Link></li>
-                  <li className=' before:bg-orange-500 5 hover:before:w-0 hover:scale-110 transition-all '><Link className=''>Logout</Link></li>
+                  <li className=' before:bg-orange-500 5 hover:before:w-0 hover:scale-110 transition-all ' ><button className='' onClick={LogoutHandler} >Logout</button></li>
                 </ul>
               </div>
             </div>

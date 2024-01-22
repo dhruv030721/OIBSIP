@@ -21,7 +21,6 @@ function AdminForm() {
         {
           loading: 'Processing...',
           success: (response) => {
-            console.log(response);
             dispatch(login(response.data));
             setTimeout(() => {
               navigate('/admin/dashboard');
@@ -29,7 +28,7 @@ function AdminForm() {
             return `${response.message}`;
           },
           error: (error) => {
-            return `${error}`
+            return `${error.response.statusText}`
           },
         }
       );

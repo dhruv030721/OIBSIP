@@ -13,5 +13,7 @@ import ProductSection from "./Product/ProductSection";
 import ForgotPasswordForm from "./Form/ForgotPasswordForm";
 import RadioButton from "./RadioButton";
 import BgFillButton from "./BgFillButton";
+import FileInput from "./FileInput";
+import CheckboxInput from "./CheckboxInput";
 
-export { LoginForm, SignupForm, Template, AdminForm, Input, Protected, ProtectedAdmin, Button,TextArea, Select, LottieAnimation, ProductSection, ForgotPasswordForm, RadioButton, BgFillButton }
+export { LoginForm, SignupForm, Template, AdminForm, Input, Protected, ProtectedAdmin, Button,TextArea, Select, LottieAnimation, ProductSection, ForgotPasswordForm, RadioButton, BgFillButton, FileInput, CheckboxInput }

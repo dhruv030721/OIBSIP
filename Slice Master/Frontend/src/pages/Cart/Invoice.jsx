@@ -3,7 +3,7 @@ import config from '../../../config/config'
 import axios from "axios"
 import productService from "../../services/productService";
 import toast from 'react-hot-toast'
-import {useDispatch} from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { emptyCart } from "../../store/cartSlice";
 
 function Invoice({
@@ -16,15 +16,17 @@ function Invoice({
   const [grandTotal, setGrandTotal] = useState(0);
   const dispatch = useDispatch();
 
-
   function loadScript(src) {
+    toast.loading("Processing...")
     return new Promise((resolve) => {
       const script = document.createElement("script");
       script.src = src;
       script.onload = () => {
+        toast.remove()
         resolve(true);
       };
       script.onerror = () => {
+        toast.remove()
         resolve(false);
       };
       document.body.appendChild(script);
@@ -37,8 +39,7 @@ function Invoice({
     );
 
     if (!res) {
-      alert("Razorpay SDK failed to load. Are you online?");
-      return;
+      toast.error("Razorpay SDK failed to load. Are you online?")
     }
 
     const body = {
@@ -49,7 +50,7 @@ function Invoice({
     const result = await axios.post("/api/v1/payment", body);
 
     if (!result) {
-      alert("Server error. Are you online?");
+      toast.error(result.response.statusText);
       return;
     }
 
@@ -84,15 +85,15 @@ function Invoice({
 
         const data = {
           orderId: responseData.orderCreationId,
-          name : name,
+          name: name,
           orderItem: orderItem,
-          amount : amount,
+          amount: grandTotal,
           date: new Date().toLocaleDateString('en-GB', {
             day: '2-digit',
             month: '2-digit',
             year: 'numeric',
           }),
-          time:new Date().toLocaleTimeString(),
+          time: new Date().toLocaleTimeString(),
         }
 
         try {
@@ -148,8 +149,6 @@ function Invoice({
     setGrandTotal(total + gst + packageCharge)
 
   })
-
-
 
 
   return (

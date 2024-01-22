@@ -6,7 +6,7 @@ function Home() {
 
   return (
     <>
-      <div className=''>
+      <div className='min-h-screen'>
         <HeroSection />
         <TrendingProducts />
         {/* <Suppliers /> */}

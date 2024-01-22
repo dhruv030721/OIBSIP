@@ -1,18 +1,19 @@
 import axios from 'axios';
 
 export class AdminService {
-  async AddItem({ itemname, img, description, istrending, category , regularprice, medimumprice, largeprice }) {
+  async AddItem({ itemname, description, istrending, category, regularprice, medimumprice, largeprice }, Img) {
     try {
+
 
       const formData = new FormData();
       formData.append('name', itemname);
-      formData.append('files', img[0]);
+      formData.append('files', Img);
       formData.append('description', description);
       formData.append('isTrending', istrending);
       formData.append('category', category);
-      formData.append('regular',regularprice)
-      formData.append('medium',medimumprice)
-      formData.append('large',largeprice)
+      formData.append('regular', regularprice)
+      formData.append('medium', medimumprice)
+      formData.append('large', largeprice)
 
       const response = await axios.post('/api/v1/additem', formData, {
         headers: {
@@ -46,6 +47,17 @@ export class AdminService {
     }
   }
 
+  async GetOrder() {
+    try {
+
+      const response = await axios.get('/api/v1/getorders')
+
+      return { data: response.data }
+
+    } catch (error) {
+      throw error;
+    }
+  }
 
 }
 

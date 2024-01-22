@@ -11,10 +11,8 @@ export default function Protected({ children, authentication = true }) {
 
     useEffect(() => {
         if (authentication && !authStatus) {
-            console.log("Redirecting to login");
             navigate("/login");
         } else if (!authentication && authStatus) {
-            console.log("Redirecting to home");
             navigate("/");
         }
 

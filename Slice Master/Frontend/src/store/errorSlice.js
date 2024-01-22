@@ -4,6 +4,7 @@ const initialState =
 {
     itemDataError : null,
     ingredientDataError : null,
+    orderDataError : null,
 };
 
 const errorSlice = createSlice({
@@ -15,12 +16,15 @@ const errorSlice = createSlice({
         },
         addIngredientDataError : (state, action) => {
             state.ingredientDataError = action.payload
+        },
+        addOrderDataError : (state, action) => {
+            state.orderDataError = action.payload
         }
     }
 })
 
 
-export const { addItemDataError, addIngredientDataError } = errorSlice.actions;
+export const { addItemDataError, addIngredientDataError, addOrderDataError } = errorSlice.actions;
 
 
 export default errorSlice.reducer;

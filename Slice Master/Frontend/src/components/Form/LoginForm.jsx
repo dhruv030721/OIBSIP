@@ -31,7 +31,7 @@ function LoginForm() {
                         return `${response.message}`;
                     },
                     error: (error) => {
-                        return `${error.response.data.message}`
+                        return `${error.response.statusText}`
                     },
                 }
             );

@@ -1,19 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Input, Button, TextArea, Select } from '../../../components/index'
 import { useForm } from 'react-hook-form'
 import adminService from '../../../services/adminService'
 import toast, { Toaster } from 'react-hot-toast'
-import FileInput from '../../../components/FileInput'
-
+import { FileInput, CheckboxInput } from '../../../components'
 
 function AddItem() {
 
-  const { register, handleSubmit, reset,  formState: { errors } } = useForm();
+  const { register, handleSubmit, reset, formState: { errors } } = useForm();
+  const [Img, setImg] = useState(null);
+  const [fileName, setFileName] = useState("Upload Image Here");
+
+  const FileHandler = (event) => {
+    setImg(event.target.files[0])
+    setFileName(event.target.files[0].name)
+  }
+
 
   const AddItemHandler = async (data) => {
     try {
       await toast.promise(
-        adminService.AddItem(data), {
+        adminService.AddItem(data,Img), {
         loading: 'Processing...',
         success: (response) => {
           reset()
@@ -59,14 +66,10 @@ function AddItem() {
             {errors.price && <p className='text-red-500'>*Please check the price field</p>}
           </div>
           <div>
-            <FileInput labelname="Upload Image here" type="file" {...register("img", {
-              required: true
-            })} />
-            {errors.img && <p className='text-red-500'>*Upload Image</p>}
+            <FileInput labelname={fileName} onChange={FileHandler} />
           </div>
-          <div className='flex items-center gap-5'>
-            <input className="dark:border-white-400/20 dark:scale-100 transition-all duration-500 ease-in-out dark:hover:scale-110 dark:checked:scale-100 w-5 h-5" type="checkbox" {...register("istrending")}  ></input>
-            <label htmlFor="" className='text-white'>isTrending?</label>
+          <div className='w-full'>
+            <CheckboxInput {...register("istrending")} />
           </div>
           <TextArea className="border-white text-white" label="Description" rows='4' cols='10' {...register("description")} />
           <div>
@@ -74,10 +77,9 @@ function AddItem() {
               required: true,
             })} />
           </div>
-            <Button btnName="Add" className="w-[50%]" onClick={handleSubmit(AddItemHandler)} />
+          <Button btnName="Add" className="w-[50%]" onClick={handleSubmit(AddItemHandler)} />
         </form>
       </div>
-      <Toaster />
     </div>
   )
 }

@@ -2,15 +2,28 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import DeliveryBoy from '../../assets/jsons/deliveryboy.json'
 import { LottieAnimation } from '../../components'
-import { CiShoppingCart } from "react-icons/ci";
+import { GiShoppingCart } from "react-icons/gi";
 import CartCard from './CartCard';
 import Invoice from './Invoice';
+import { useNavigate } from 'react-router-dom';
 
 
 function Cart() {
 
   const cartData = useSelector((state) => state.cart.cartItem)
   const userData = useSelector((state) => state.auth.userData)
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!userData) {
+      navigate('/login');
+    }
+  }, [userData, navigate]);
+
+  if (!userData) {
+    return null;
+  }
+
 
   if (cartData.length == 0) {
     return (
@@ -27,7 +40,7 @@ function Cart() {
         <div className='w-[30%] flex flex-col ml-5 '>
           <div className='flex items-center justify-center space-x-3'>
             <h1 className='text-white font-bold drop-shadow-3xl text-3xl font-poppins text-center'>Cart Items</h1>
-            <CiShoppingCart color='white' size={40} />
+            <GiShoppingCart color='white' size={40} />
           </div>
           <div className='w-full mt-3 h-[0.1px] bg-orange-500'></div>
           {

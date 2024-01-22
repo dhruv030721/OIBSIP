@@ -19,7 +19,7 @@ function App() {
         dispatch(additem(ItemResponse.data))
       } catch (error) {
         console.error("Error fetching items:", error);
-        dispatch(addItemDataError({ message: error.ItemResponse.statusText, statusCode: error.ItemResponse.status }))
+        dispatch(addItemDataError({ message: error.response.statusText, statusCode: error.response.status }))
       }
     })()
       ;(async () => {
@@ -28,7 +28,7 @@ function App() {
           dispatch(addIngredients(IngredientsResponse.data))
         } catch (error) {
           console.error("Error fetching items:", error);
-          dispatch(addIngredientDataError({ message: error.IngredientsResponse.statusText, statusCode: error.IngredientsResponse.status }))
+          dispatch(addIngredientDataError({ message: error.response.statusText, statusCode: error.response.status }))
         }
       })()
   })

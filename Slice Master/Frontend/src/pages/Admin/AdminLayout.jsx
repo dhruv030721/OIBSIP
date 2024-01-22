@@ -13,10 +13,6 @@ function AdminLayout() {
       path: 'dashboard',
     },
     {
-      name: "Edit Profile",
-      path: 'edit-profile',
-    },
-    {
       name: "Add Item",
       path: 'add-item',
     },
