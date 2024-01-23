@@ -15,5 +15,7 @@ import RadioButton from "./RadioButton";
 import BgFillButton from "./BgFillButton";
 import FileInput from "./FileInput";
 import CheckboxInput from "./CheckboxInput";
-
-export { LoginForm, SignupForm, Template, AdminForm, Input, Protected, ProtectedAdmin, Button,TextArea, Select, LottieAnimation, ProductSection, ForgotPasswordForm, RadioButton, BgFillButton, FileInput, CheckboxInput }
+import Loading from "./Loading";
+import Header from "./Header/Header"
+import Footer from "./Footer/Footer"
+export { LoginForm, SignupForm, Template, AdminForm, Input, Protected, ProtectedAdmin, Button, TextArea, Select, LottieAnimation, ProductSection, ForgotPasswordForm, RadioButton, BgFillButton, FileInput, CheckboxInput, Loading, Header, Footer }

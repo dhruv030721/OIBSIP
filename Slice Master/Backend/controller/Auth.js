@@ -1,6 +1,6 @@
 const Users = require("../model/User");
 const bcrypt = require("bcrypt")
-const jwt=require("jsonwebtoken");
+const jwt = require("jsonwebtoken");
 
 exports.signup = async (req, res) => {
     try {
@@ -68,8 +68,7 @@ exports.login = async (req, res) => {
         }
 
         const payload = {
-            email: user.email,
-            id: user._id,
+            userdata: user
         }
 
         if (await bcrypt.compare(password, user.password)) {
@@ -83,16 +82,17 @@ exports.login = async (req, res) => {
 
 
             const options = {
-                expires: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000),
-                httponly: true,
+                expires: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000)
             }
 
-            res.cookie("token", token, options).status(200).json({
-                success: true,
-                token,
-                user,
-                message: "User Logged in successfully!"
-            })
+            setTimeout(() => {
+                res.cookie("token", token, options).status(200).json({
+                    success: true,
+                    token,
+                    user,
+                    message: "User Logged in successfully!"
+                })
+            }, 1000);
         } else {
             return res.status(401).json({
                 success: false,

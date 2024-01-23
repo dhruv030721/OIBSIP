@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Input } from '../index'
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form'
 import authService from '../../services/auth';
 import toast, { Toaster } from 'react-hot-toast'
@@ -12,6 +12,7 @@ function AdminForm() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { register, handleSubmit, formState: { errors } } = useForm()
+  const status = useSelector((state) => state.adminAuth.status)
 
 
   const AdminLoginHandler = async (data) => {
@@ -36,6 +37,12 @@ function AdminForm() {
       console.error(error);
     }
   };
+
+  useEffect(()=>{
+    if(status){
+      navigate('/admin/dashboard');
+    }
+  },[navigate,status])
 
 
 

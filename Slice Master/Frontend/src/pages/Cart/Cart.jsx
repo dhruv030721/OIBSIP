@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import DeliveryBoy from '../../assets/jsons/deliveryboy.json'
-import { LottieAnimation } from '../../components'
+import { Loading } from '../../components'
 import { GiShoppingCart } from "react-icons/gi";
 import CartCard from './CartCard';
 import Invoice from './Invoice';
@@ -27,10 +26,7 @@ function Cart() {
 
   if (cartData.length == 0) {
     return (
-      <div className='min-h-screen bg-bg-gray text-orange-500 flex flex-col items-center justify-center font-poppins text-4xl'>
-        <h2 className='font-bold drop-shadow-3xl'>No Item in Cart!</h2>
-        <LottieAnimation json={DeliveryBoy} divclassName='max-w-[30%]' />
-      </div>
+      <Loading message="No items in cart!"/>
     )
   }
 

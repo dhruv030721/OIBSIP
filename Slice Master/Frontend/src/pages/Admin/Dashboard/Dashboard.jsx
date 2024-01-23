@@ -43,23 +43,23 @@ function Dashboard() {
         <button><MdOutlineRefresh size={25} color='white' className='group-checked:animate-rotate' /></button>
       </div>
 
-      <div class="relative overflow-x-auto shadow-xl sm:rounded-lg mx-10 text-white border-orange-500 border-2 ">
-        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 table-auto">
-          <thead class="text-lg bg-dark-blue text-center ">
+      <div className="relative overflow-x-auto shadow-xl sm:rounded-lg mx-10 text-white border-orange-500 border-2 ">
+        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 table-auto">
+          <thead className="text-lg bg-dark-blue text-center ">
             <tr>
-              <th class="px-6 py-3">
+              <th className="px-6 py-3">
                 Date
               </th>
-              <th class="px-6 py-3">
+              <th className="px-6 py-3">
                 Time
               </th>
-              <th class="px-6 py-3">
+              <th className="px-6 py-3">
                 OrderID
               </th>
-              <th class="px-6 py-3">
+              <th className="px-6 py-3">
                 Name
               </th>
-              <th class="px-6 py-3">
+              <th className="px-6 py-3">
                 Amount
               </th>
             </tr>

@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { FcGoogle } from "react-icons/fc";
 import { Input } from '../index'
 import { useForm } from 'react-hook-form'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import authService from '../../services/auth'
 import { login } from '../../store/authSlice'
 import toast, { Toaster } from 'react-hot-toast'
@@ -14,7 +14,7 @@ function LoginForm() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { register, handleSubmit, formState: { errors } } = useForm()
-
+    const status = useSelector((state) => state.auth.status)
 
     const LoginHandler = async (data) => {
         try {
@@ -39,6 +39,14 @@ function LoginForm() {
             console.error(error);
         }
     };
+
+
+    useEffect(() => {
+        console.log(status)
+        if(status){
+            navigate('/')
+        }
+    },[status,navigate])
 
     return (
         <div className='font-poppins w-[60%] h-[55%] flex flex-col justify-around' >

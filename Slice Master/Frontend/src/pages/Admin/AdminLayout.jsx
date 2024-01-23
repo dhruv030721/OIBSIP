@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Logo from '../../assets/wallpaper/Chef.png'
 import { NavLink, Outlet } from 'react-router-dom';
-import { useSelector , useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Button } from '../../components'
 import { logout } from '../../store/adminAuthSlice'
 
@@ -32,14 +32,13 @@ function AdminLayout() {
   const dispatch = useDispatch();
 
   const LogoutHandler = () => {
+    document.cookie = 'admintoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
     dispatch(logout())
   }
 
   useEffect(() => {
-
     setAdminData(admin)
-
-  }, [AdminData])
+  }, [admin])
 
 
   return (
@@ -58,7 +57,7 @@ function AdminLayout() {
               <NavLink to={item.path} className={({ isActive }) => ` ${isActive ? "before:w-1 before:h-full" : "before:w-0"} before:absolute  before:bg-orange-500 before:h-full group-hover:before:w-1  items-center flex group-hover:transition-all before:top-0 before:left-0 before:transition-all before:-z-10  before:rounded-2xl w-full h-full justify-center`}>{item.name}</NavLink>
             </div>
           ))}
-          <Button btnName="Logout" className="mt-5" onClick={LogoutHandler}/>
+          <Button btnName="Logout" className="mt-5" onClick={LogoutHandler} />
         </div>
       </div>
       <div className='min-w-[80%]'>
