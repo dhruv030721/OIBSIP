@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import { Header, Footer, Loading } from './components'
 import { useDispatch } from 'react-redux'
@@ -16,7 +16,6 @@ function App() {
 
   const getCookie = (name) => {
     const cookieString = document.cookie;
-    console.log(cookieString)
     const cookies = cookieString.split('; ');
 
     for (const cookie of cookies) {
@@ -32,8 +31,11 @@ function App() {
 
   const decodedData = () => {
     const token = getCookie("token");
-    const data = jwtDecode(token)
-    return data
+    if (token) {
+      const data = jwtDecode(token)
+      return data
+    }
+    return null
   }
 
   useEffect(() => {

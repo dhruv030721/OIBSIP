@@ -1,15 +1,17 @@
-import React, { useState } from 'react'
-import { Input, Button, TextArea, Select } from '../../../components/index'
+import React, { useEffect, useState } from 'react'
+import { useLoaderData } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
-import adminService from '../../../services/adminService'
-import toast, { Toaster } from 'react-hot-toast'
-import { FileInput, CheckboxInput } from '../../../components'
+import { Input, CheckboxInput, Select, Button, FileInput, TextArea } from '../../../components'
 
-function AddItem() {
+function EditItemPage() {
 
-  const { register, handleSubmit, reset, formState: { errors } } = useForm();
+  const ItemData = useLoaderData()
+  const {data} = ItemData;
+  const { register, handleSubmit, setValue, formState: { errors } } = useForm();
   const [Img, setImg] = useState(null);
   const [fileName, setFileName] = useState("Upload Image Here");
+  const [previewImg, setpreviewImg] = useState(null);
+
 
   const FileHandler = (event) => {
     setImg(event.target.files[0])
@@ -17,37 +19,30 @@ function AddItem() {
   }
 
 
-  const AddItemHandler = async (data) => {
-    try {
-      await toast.promise(
-        adminService.AddItem(data,Img), {
-        loading: 'Processing...',
-        success: (response) => {
-          reset()
-          setImg(null)
-          setFileName("Upload Image Here")
-          return `${response.message}`;
-        },
-        error: (error) => {
-          return `${error}`
-        },
-      }
-      )
+  const EditItemHandler = async () => {
 
-    } catch (error) {
-      console.log(error);
-    }
   }
+
+  useEffect(() => {
+    setValue("itemname", data.name);
+    setValue("regularprice", data.price.regular);
+    setValue("medimumprice", data.price.medium);
+    setValue("largeprice", data.price.large);
+    setValue("istrending", data.isTrending);
+    setValue("description", data.description);
+    setValue("category", data.category);
+    setpreviewImg(data.imgUrl);
+  }, [data, setValue]);
 
 
   return (
     <div className='w-full'>
       <div className='px-10 py-5 flex flex-col items-center'>
-        <h2 className='text-orange-300 font-kaushan text-4xl text-center flex'>Add Item </h2>
+        <h2 className='text-orange-300 font-kaushan text-4xl text-center flex'>Edit Item </h2>
       </div>
       <div className='min-h-[1px]  bg-gradient-to-r from-bg-gray via-orange-500  to-bg-gray'></div>
       <div className='py-5 px-32'>
-        <form className='grid grid-cols-2 gap-16 items-start' onSubmit={handleSubmit(AddItemHandler)}>
+        <form className='grid grid-cols-2 gap-16 items-start' onSubmit={handleSubmit(EditItemHandler)}>
           <div>
             <Input label="Item Name" className='bg-transparent border-white text-white font-light' labelclassName='text-white font-light ' {...register("itemname", {
               required: true,
@@ -67,8 +62,9 @@ function AddItem() {
             })} />
             {errors.price && <p className='text-red-500'>*Please check the price field</p>}
           </div>
-          <div>
-            <FileInput labelname={fileName} onChange={FileHandler} />
+          <div className='flex flex-col  justify-center w-full space-y-5'>
+            <img src={previewImg} alt="" className='w-32 object-contain border-2 border-orange-200 rounded-xl drop-shadow-3xl' />
+            <FileInput labelname={fileName} onChange={FileHandler}  />
           </div>
           <div className='w-full'>
             <CheckboxInput {...register("istrending")} />
@@ -79,11 +75,12 @@ function AddItem() {
               required: true,
             })} />
           </div>
-          <Button btnName="Add" className="w-[50%]" onClick={handleSubmit(AddItemHandler)} />
+          <Button btnName="Edit" className="w-[50%]" onClick={handleSubmit(EditItemHandler)} />
         </form>
       </div>
     </div>
   )
 }
 
-export default AddItem
+export default EditItemPage
+

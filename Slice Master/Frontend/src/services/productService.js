@@ -11,7 +11,7 @@ export class ProductService {
         }
     }
 
-    
+
 
     async GetIngredients() {
         try {
@@ -26,19 +26,32 @@ export class ProductService {
         }
     }
 
-    async addOrder({orderId,name,orderItem,amount,date,time}){
+    async addOrder({ orderId, name, orderItem, amount, date, time }) {
         try {
 
-            const body = {orderId,name,orderItem,amount,date,time};
+            const body = { orderId, name, orderItem, amount, date, time };
 
-            const response = await axios.post('/api/v1/addOrder',body)
+            const response = await axios.post('/api/v1/addOrder', body)
 
-            return {message : response.data.message}
+            return { message: response.data.message }
 
         } catch (error) {
             throw error;
         }
     }
+
+    async GetOneItem(id) {
+        try {
+
+            const response = await axios.get(`/api/v1/getoneitem/${id}`);
+
+            return { data: response.data.item }
+
+        } catch (error) {
+            throw error;
+        }
+    }
+
 }
 
 const productService = new ProductService();

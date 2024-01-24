@@ -42,8 +42,8 @@ function AdminLayout() {
 
 
   return (
-    <div className='flex flex-wrap font-poppins bg-bg-gray'>
-      <div className='min-w-[20%] h-screen py-10   flex flex-col rounded-se-xl rounded-ee-xl shadow-2xl bg-bg-gray bg-transparent bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-30  before:bg-black before:absolute before:top-0 before:w-full before:h-full before:opacity-40 before:-z-20 text-white  before:rounded-se-xl before:rounded-ee-xl border-r-2 border-orange-500 '>
+    <div className='flex flex-wrap font-poppins bg-bg-gray '>
+      <div className='min-w-[20%] h-screen py-10 fixed  flex flex-col rounded-se-xl rounded-ee-xl shadow-2xl bg-bg-gray bg-transparent bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-30  before:bg-black before:absolute before:top-0 before:w-full before:h-full before:opacity-40 before:-z-20 text-white  before:rounded-se-xl before:rounded-ee-xl border-r-2 border-orange-500 '>
         {/* Admin Details */}
         <div className='flex flex-col gap-3 items-center bg-bg-gray border-y-2 border-orange-500 rounded-2xl mx-5 p-5'>
           <img src={Logo} alt="" className='max-w-20 drop-shadow-3xl' />
@@ -60,7 +60,8 @@ function AdminLayout() {
           <Button btnName="Logout" className="mt-5" onClick={LogoutHandler} />
         </div>
       </div>
-      <div className='min-w-[80%]'>
+      <div className='flex w-full  min-h-screen'>
+        <div className='min-w-[20%] h-full'></div>
         <Outlet />
       </div>
     </div>

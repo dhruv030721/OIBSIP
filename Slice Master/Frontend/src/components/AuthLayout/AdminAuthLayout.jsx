@@ -18,14 +18,16 @@ export default function ProtectedAdmin({ children, authentication = true }) {
         }
         setTimeout(() => {
             setLoading(false)
-        }, 2000);
-    }, [authStatus, navigate, authentication])
+        }, 1000);
+    }, [authStatus, navigate, authentication])  
 
 
 
     if (loading) {
         return (
-            <Loading/>
+            <div className='w-full'>
+                <Loading/>
+            </div>
         )
     }
     return <>{children}</>

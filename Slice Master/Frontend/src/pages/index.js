@@ -9,10 +9,11 @@ import AdminLayout from './Admin/AdminLayout'
 import Dashboard from './Admin/Dashboard/Dashboard'
 import Admin from './Admin/Admin'
 import EditItem from './Admin/EditItem/EditItem'
+import EditItemPage from './Admin/EditItem/EditItemPage'
 import AddItem from './Admin/AddItem/AddItem'
 import Cart from './Cart/Cart'
 import EditUserProfile from './User/EditProfile'
 import ForgotPassword from './Login/ForgotPassword'
 import ManageIngredients from './Admin/ManageIngredients/ManageIngredients'
 
-export { Login, Home, Signup, ContactUs, AboutUs, OurMenu, AdminLogin, AdminLayout, Dashboard, Admin, EditItem, AddItem, Cart, EditUserProfile, ForgotPassword, ManageIngredients };
+export { Login, Home, Signup, ContactUs, AboutUs, OurMenu, AdminLogin, AdminLayout, Dashboard, Admin, EditItem, AddItem, Cart, EditUserProfile, ForgotPassword, ManageIngredients, EditItemPage };
