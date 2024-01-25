@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useLoaderData } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { Input, CheckboxInput, Select, Button, FileInput, TextArea } from '../../../components'
+import toast, {LoaderIcon, Toaster} from 'react-hot-toast'
+import adminService from '../../../services/adminService'
 
 function EditItemPage() {
 
@@ -14,13 +16,40 @@ function EditItemPage() {
 
 
   const FileHandler = (event) => {
-    setImg(event.target.files[0])
-    setFileName(event.target.files[0].name)
-  }
+    const selectedFile = event.target.files[0];
+
+    // Check if a file is selected
+    if (selectedFile) {
+      setImg(selectedFile);
+      setFileName(selectedFile.name);
+
+      // Read the selected file and set the preview image
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setpreviewImg(e.target.result);
+      };
+      reader.readAsDataURL(selectedFile);
+    }
+  };
 
 
-  const EditItemHandler = async () => {
-
+  const EditItemHandler = async (data) => {
+      try {
+        await toast.promise(
+          adminService.EditItem(data,Img),{
+            loading: 'Processing...',
+            success: (response) =>{
+              return `${response.message}`
+            },
+            error: (error) => {
+              return `${error}`
+            }
+          }
+          
+        )
+      } catch (error) {
+        console.log(error);
+      }
   }
 
   useEffect(() => {
@@ -31,6 +60,7 @@ function EditItemPage() {
     setValue("istrending", data.isTrending);
     setValue("description", data.description);
     setValue("category", data.category);
+    setImg(data.imgUrl);
     setpreviewImg(data.imgUrl);
   }, [data, setValue]);
 
@@ -63,6 +93,7 @@ function EditItemPage() {
             {errors.price && <p className='text-red-500'>*Please check the price field</p>}
           </div>
           <div className='flex flex-col  justify-center w-full space-y-5'>
+            <h1 className='text-white'>Image</h1>
             <img src={previewImg} alt="" className='w-32 object-contain border-2 border-orange-200 rounded-xl drop-shadow-3xl' />
             <FileInput labelname={fileName} onChange={FileHandler}  />
           </div>

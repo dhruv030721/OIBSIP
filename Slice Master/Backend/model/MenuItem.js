@@ -9,6 +9,10 @@ const MenuItem = new mongoose.Schema({
         type : String,
         required : true,
     },
+    img_public_id:{
+        type: String,
+        required : true
+    },
     description : {
         type: String,
         required : true,

@@ -12,6 +12,7 @@ const { Order } = require("../controller/Order")
 const { ForgotPassword, otpVerification, updatePassword } = require("../controller/ForgotPassword")
 const { GetOrder } = require("../controller/GetOrder")
 const {GetOneItem} = require("../controller/GetOneItem")
+const {EditItem} = require("../controller/EditItem")
 
 router.post("/signup", signup);
 router.post("/login", login);
@@ -27,6 +28,7 @@ router.post("/otpverification", otpVerification)
 router.post("/updatepassword", updatePassword)
 router.get("/getorders",GetOrder)
 router.get("/getoneitem/:id",GetOneItem)
+router.post("/edititem",EditItem)
 
 module.exports = router;
 

@@ -27,7 +27,7 @@ async function uploadFileToCloudinary(file, folder, quality) {
 
 exports.AddItem = async (req, res) => {
     try {
-        const { name, isTrending, description, category ,regular, medium, large } = req.body;
+        const { name, isTrending, description, category, regular, medium, large } = req.body;
 
         const item = await Item.find({ name });
 
@@ -61,7 +61,7 @@ exports.AddItem = async (req, res) => {
         console.log(response);
 
 
-        const newItem = await Item.create({ name, imgUrl: response.secure_url, isTrending, description, category, price:{regular,medium,large} });
+        const newItem = await Item.create({ name, imgUrl: response.secure_url, img_public_id: response.public_id ,isTrending, description, category, price: { regular, medium, large } });
 
         return res.status(200).json({
             success: true,

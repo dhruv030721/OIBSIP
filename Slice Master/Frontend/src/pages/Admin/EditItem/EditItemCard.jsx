@@ -21,7 +21,7 @@ function EditItemCard({ item }) {
             <h1 className=''>{item.name}</h1>
             <p className='text-sm'>Category : {item.category}</p>
             <div className='flex items-center space-x-5'>
-                <Link to={`/admin/edit-item/${item._id}`} className='bg-orange-200 py-2 px-5 font-black flex items-center gap-3 rounded-xl text-black'>Edit <FaEdit /></Link>
+                <Link to={`/admin/edit-item/${item._id}`} className='bg-orange-200 py-2 px-5 font-black flex items-center gap-3 rounded-xl text-black hover:scale-110 transition-all'>Edit <FaEdit /></Link>
                 <Link onClick={DeleteItem} className='bg-red-300 py-2 px-5 rounded-xl text-black'><FaTrashAlt /></Link>
             </div>
         </div>
