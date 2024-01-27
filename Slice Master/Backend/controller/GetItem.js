@@ -18,7 +18,7 @@ exports.GetItem = async (req, res) => {
                 message: "Data fetched Successfully",
                 items
             }) 
-        }, 2000);
+        }, 1000);
 
     } catch (error) {
         console.log(error)

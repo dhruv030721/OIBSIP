@@ -59,10 +59,11 @@ export class AdminService {
   }
 
 
-  async EditItem({ itemname, description, istrending, category, regularprice, medimumprice, largeprice }, Img) {
+  async EditItem({ itemname, description, istrending, category, regularprice, medimumprice, largeprice }, Img, id) {
     try {
 
       const formData = new FormData();
+      formData.append('id', id);
       formData.append('name', itemname);
       formData.append('files', Img);
       formData.append('description', description);
@@ -79,6 +80,20 @@ export class AdminService {
       })
 
       return {message : response.data.message}
+
+    } catch (error) {
+      throw error;
+    }
+  }
+
+
+  async DeleteItem(id){
+    try {
+      
+      const response = await axios.delete(`/api/v1/deleteitem/${id}`)
+
+      return {message : response.data.message}
+
 
     } catch (error) {
       throw error;

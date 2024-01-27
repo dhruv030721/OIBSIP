@@ -35,9 +35,11 @@ async function deleteFileFromCloudinary(publicId) {
 
 exports.EditItem = async (req, res) => {
     try {
-        const { name, isTrending, description, category, regular, medium, large } = req.body;
+        const { id, name, isTrending, description, category, regular, medium, large } = req.body;
 
-        const item = await Item.findOne({ name: name });
+        const item = await Item.findById(id);
+
+        console.log(item)
 
         if (item.length == 0) {
             return res.status(404).json({
@@ -46,43 +48,62 @@ exports.EditItem = async (req, res) => {
             })
         }
 
-        const publicId = item.img_public_id;
+        if (req.files != null) {
+            const publicId = item.img_public_id;
+            const deleteResponse = await deleteFileFromCloudinary(publicId);
+            if (deleteResponse) {
+                const { files } = req.files;
+                const supportedTypes = ["jpg", "jpeg", "png"];
+                const fileType = files.name.split(".")[1].toLowerCase();
 
-        const deleteResponse = await deleteFileFromCloudinary(publicId);
+                if (!isFileTypeSupported(fileType, supportedTypes)) {
+                    return res.status(400).json({
+                        success: false,
+                        message: "File format not supported!"
+                    })
+                }
 
-        if (deleteResponse) {
-            const { files } = req.files;
+                const response = await uploadFileToCloudinary(files, "Practice");
 
-            const supportedTypes = ["jpg", "jpeg", "png"];
-            const fileType = files.name.split(".")[1].toLowerCase();
+                console.log(response)
 
-            if (!isFileTypeSupported(fileType, supportedTypes)) {
+                const filter = { _id : id };
+                let update = { name, isTrending, description, category, price: { regular, medium, large }, imgUrl: response.secure_url, img_public_id: response.public_id }
+
+                if(category == "Beverages"){
+                    update = { name, isTrending, description, category, price: { regular }, imgUrl: response.secure_url, img_public_id: response.public_id }
+                }
+
+                await Item.findOneAndUpdate(filter, update);
+
+                return res.status(200).json({
+                    success: true,
+                    message: "Item Edited!"
+                })
+
+            } else {
                 return res.status(400).json({
                     success: false,
-                    message: "File format not supported!"
+                    message: "An error occured!"
                 })
             }
+        } else {
+            const filter = { _id : id };
 
-            const response = await uploadFileToCloudinary(files, "Practice");
+            let update = { name, isTrending, description, category, price: { regular, medium, large } }
 
-            console.log(response)
+            if(category == "Beverages"){
+                update = { name, isTrending, description, category, price: { regular }}
+            }
 
-            const filter = { name: name };
-            const update = { name, isTrending, description, category, price: { regular, medium, large }, imgUrl: response.secure_url, img_public_id: response.public_id }
-
-            const newItem = await Item.findOneAndUpdate(filter, update);
+            await Item.findOneAndUpdate(filter, update);
 
             return res.status(200).json({
-                success: true,
+                success: false,
                 message: "Item Edited!"
             })
-
-        } else {
-            return res.status(400).json({
-                success: false,
-                message: "An error occured!"
-            })
         }
+
 
     } catch (error) {
         console.log(error)

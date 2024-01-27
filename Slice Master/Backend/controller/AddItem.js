@@ -34,7 +34,7 @@ exports.AddItem = async (req, res) => {
         console.log(item)
 
         if (item.length != 0) {
-            res.status(403).json({
+            return res.status(403).json({
                 success: false,
                 message: "Item already exists!"
             })

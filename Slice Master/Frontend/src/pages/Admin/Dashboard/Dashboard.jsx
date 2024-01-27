@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import DetailCard from './DetailCard'
 import { useDispatch, useSelector } from 'react-redux'
 import adminService from '../../../services/adminService'
@@ -13,12 +13,15 @@ function Dashboard() {
   const TotalItems = useSelector((state) => state.product.items)
   const TotalOrder = useSelector((state) => state.product.orders)
   const dispatch = useDispatch();
+  const [rotate, setRotate] = useState(false);
 
 
-  const RefershDashboard = useCallback(async () => {
+  const RefreshDashboard = useCallback(async () => {
     try {
+      setRotate(true)
       const OrderResponse = await adminService.GetOrder();
       dispatch(addOrders(OrderResponse.data.orders))
+      setRotate(false)
     } catch (error) {
       console.error("Error fetching items:", error);
       dispatch(addOrderDataError({ message: error.response.statusText, statusCode: error.response.status }))
@@ -38,9 +41,9 @@ function Dashboard() {
         <DetailCard value={`Total Items : ${TotalItems !== null ? TotalItems.length : 0}`} />
         <DetailCard value={`Total Available Ingredients : ${TotalIngredients !== null ? TotalIngredients.length : 0}`} />
       </div>
-      <div className='text-white flex text-xl space-x-2 justify-end pr-10 cursor-pointer group' onClick={RefershDashboard}>
+      <div className='text-white flex text-xl space-x-2 justify-end pr-10 cursor-pointer group' onClick={RefreshDashboard}>
         <h1>Refresh</h1>
-        <button><MdOutlineRefresh size={25} color='white' className='group-checked:animate-rotate' /></button>
+        <button><MdOutlineRefresh size={25} color='white' className={`${rotate ? "animate-spin" : ""}`} /></button>
       </div>
 
       <div className="relative overflow-x-auto shadow-xl sm:rounded-lg mx-10 text-white border-orange-500 border-2 ">

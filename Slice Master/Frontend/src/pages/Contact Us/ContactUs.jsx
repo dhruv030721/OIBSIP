@@ -1,13 +1,33 @@
-import React from 'react'
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaTelegramPlane } from "react-icons/fa";
-import { Input, TextArea } from '../../components'
-import { useForm } from 'react-hook-form'
+import { Input, TextArea } from '../../components';
+import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
+import userService from '../../services/userService';
 
 function ContactUs() {
 
-  const { register, handleSubmit, formState: { errors } } = useForm();
-  const contactHandler = () => {
+  const { register, handleSubmit, reset, formState: { errors } } = useForm();
+
+  const contactHandler = async (data) => {
+    try {
+      await toast.promise(
+        userService.contactUs(data),
+        {
+          loading : "Processing...",
+          success : (response) => {
+            reset()
+            return `${response.message}`
+          },
+          error : (error) => {
+            return `${error.response.data.message}`
+          }
+        }
+      )
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (

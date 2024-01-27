@@ -51,6 +51,25 @@ export class UserService{
         }
     }
 
+    async contactUs(data){
+        try {
+            
+            const body = {
+                name : data.name,
+                email : data.email,
+                message : data.message
+            }
+
+            const response = await axios.post("/api/v1/contactus", body);
+
+            return {message : response.data.message }
+
+
+        } catch (error) {
+            throw error;
+        }
+    }
+
 }
 
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useLoaderData } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { Input, CheckboxInput, Select, Button, FileInput, TextArea } from '../../../components'
-import toast, {LoaderIcon, Toaster} from 'react-hot-toast'
+import toast from 'react-hot-toast'
 import adminService from '../../../services/adminService'
 
 function EditItemPage() {
@@ -36,7 +36,7 @@ function EditItemPage() {
   const EditItemHandler = async (data) => {
       try {
         await toast.promise(
-          adminService.EditItem(data,Img),{
+          adminService.EditItem(data,Img,ItemData.data._id),{
             loading: 'Processing...',
             success: (response) =>{
               return `${response.message}`
@@ -60,7 +60,6 @@ function EditItemPage() {
     setValue("istrending", data.isTrending);
     setValue("description", data.description);
     setValue("category", data.category);
-    setImg(data.imgUrl);
     setpreviewImg(data.imgUrl);
   }, [data, setValue]);
 

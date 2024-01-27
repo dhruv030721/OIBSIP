@@ -9,9 +9,16 @@ function AddItem() {
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const [Img, setImg] = useState(null);
+  const [imgValidation, setImgValidation] = useState(false)
   const [fileName, setFileName] = useState("Upload Image Here");
 
   const FileHandler = (event) => {
+    if (!Img) {
+      setImgValidation(true);
+      return;
+    } else {
+      setImgValidation(false)
+    }
     setImg(event.target.files[0])
     setFileName(event.target.files[0].name)
   }
@@ -20,7 +27,7 @@ function AddItem() {
   const AddItemHandler = async (data) => {
     try {
       await toast.promise(
-        adminService.AddItem(data,Img), {
+        adminService.AddItem(data, Img), {
         loading: 'Processing...',
         success: (response) => {
           reset()
@@ -29,7 +36,7 @@ function AddItem() {
           return `${response.message}`;
         },
         error: (error) => {
-          return `${error}`
+          return `${error.response.data.message}`
         },
       }
       )
@@ -69,6 +76,7 @@ function AddItem() {
           </div>
           <div>
             <FileInput labelname={fileName} onChange={FileHandler} />
+            {imgValidation && <p className='text-red-500'>*Please upload image</p>}
           </div>
           <div className='w-full'>
             <CheckboxInput {...register("istrending")} />

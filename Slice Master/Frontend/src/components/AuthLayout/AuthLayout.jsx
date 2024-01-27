@@ -15,7 +15,9 @@ export default function Protected({ children, authentication = true }) {
             navigate("/");
         }
 
-        setLoading(false);
+        setTimeout(() => {
+            setLoading(false);
+        }, 1000);
     }, [authStatus, navigate, authentication]);
 
 

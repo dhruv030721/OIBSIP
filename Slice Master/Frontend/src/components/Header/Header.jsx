@@ -66,7 +66,7 @@ function Header() {
               </div>
               <div className='absolute text-white bg-black rounded-lg before:rounded-lg top-14 text-[0.8rem] py-5  w-[130%] px-2 border-y-2 border-orange-500 opacity-0 transition-all bg-transparent bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-30  before:bg-black before:absolute before:w-full before:h-full before:opacity-40 before:-z-10 before:top-0 before:left-0 -translate-y-10 group-hover:translate-y-0 group-hover:opacity-100'>
                 <ul className='flex flex-col items-center gap-y-5 text-center'>
-                  <li className=' before:bg-orange-500 5 hover:before:w-0 hover:scale-110 transition-all '><Link to='edit-userprofile' className=''>Edit Profile</Link></li>
+                  {/* <li className=' before:bg-orange-500 5 hover:before:w-0 hover:scale-110 transition-all '><Link to='edit-userprofile' className=''>Edit Profile</Link></li> */}
                   <li className=' before:bg-orange-500 5 hover:before:w-0 hover:scale-110 transition-all ' ><button className='' onClick={LogoutHandler} >Logout</button></li>
                 </ul>
               </div>
