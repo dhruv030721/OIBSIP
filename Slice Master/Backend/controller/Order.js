@@ -1,5 +1,6 @@
 const Order = require("../model/Order")
 const Ingredients = require("../model/Ingredients")
+const { getIO } = require('../config/socket')
 
 
 exports.Order = async (req, res) => {
@@ -15,18 +16,18 @@ exports.Order = async (req, res) => {
             })
         }
 
-        
+
         const ingredients = orderItem.map((item) => {
             return { crust: item.item_ingredients[0], topping: item.item_ingredients[1] }
         })
-        
+
 
         async function processIngredients() {
             for (const element of ingredients) {
                 let crust = await Ingredients.findOne({ name: element.crust });
                 let topping = await Ingredients.findOne({ name: element.topping });
 
-                if(crust == null){
+                if (crust == null) {
                     continue
                 }
 
@@ -39,8 +40,15 @@ exports.Order = async (req, res) => {
         }
 
         processIngredients();
-        
+
         await Order.create({ orderId, Name: name, orderItem, amount, date, time })
+
+        const io = getIO();
+        if (io) {
+            io.emit('newOrder', { orderId, name, orderItem, amount, date, time });
+        } else {
+            console.error("Socket.IO is not initialized");
+        }
 
 
         return res.status(200).json({

@@ -15,6 +15,8 @@ const { GetOneItem } = require("../controller/GetOneItem")
 const { EditItem } = require("../controller/EditItem")
 const { DeleteItem } = require("../controller/DeleteItem")
 const { ContactUs } = require('../controller/contactus')
+const { EditIngredient } = require('../controller/EditIngredient')
+const { ChangeOrderStatus } = require("../controller/ChangeOrderStatus")
 
 router.post("/signup", signup);
 router.post("/login", login);
@@ -33,6 +35,8 @@ router.get("/getoneitem/:id", GetOneItem)
 router.post("/edititem", EditItem)
 router.delete("/deleteitem/:id", DeleteItem)
 router.post("/contactus", ContactUs)
+router.post("/editingredient", EditIngredient)
+router.post("/changeorderstatus", ChangeOrderStatus)
 
 module.exports = router;
 

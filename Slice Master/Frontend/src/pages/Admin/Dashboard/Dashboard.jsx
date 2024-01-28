@@ -6,6 +6,7 @@ import { addOrders } from '../../../store/productSlice'
 import { addOrderDataError } from '../../../store/errorSlice'
 import { MdOutlineRefresh } from "react-icons/md";
 import TableData from './TableData'
+import { socket } from '../Admin'
 
 function Dashboard() {
 
@@ -14,8 +15,6 @@ function Dashboard() {
   const TotalOrder = useSelector((state) => state.product.orders)
   const dispatch = useDispatch();
   const [rotate, setRotate] = useState(false);
-
-
 
   const RefreshDashboard = useCallback(async () => {
     try {
@@ -30,6 +29,12 @@ function Dashboard() {
   }, [TotalOrder]
   )
 
+  useEffect(() => {
+    socket.on('newOrder', () => {
+      RefreshDashboard();
+    })
+  }, [TotalOrder, dispatch])
+
 
   return (
     <div className='w-full'>
@@ -42,9 +47,14 @@ function Dashboard() {
         <DetailCard value={`Total Items : ${TotalItems !== null ? TotalItems.length : 0}`} />
         <DetailCard value={`Total Available Ingredients : ${TotalIngredients !== null ? TotalIngredients.length : 0}`} />
       </div>
-      <div className='text-white flex text-xl space-x-2 justify-end pr-10 cursor-pointer group' onClick={RefreshDashboard}>
-        <h1>Refresh</h1>
-        <button><MdOutlineRefresh size={25} color='white' className={`${rotate ? "animate-spin" : ""}`} /></button>
+      <div className='flex justify-between'>
+        <div>
+            <h1 className='text-white text-2xl ml-10 py-5'>Order List : </h1>
+        </div>
+        <div className='text-white flex text-xl items-center space-x-2 pr-10 cursor-pointer group' onClick={RefreshDashboard}>
+          <h1>Refresh</h1>
+          <button><MdOutlineRefresh size={25} color='white' className={`${rotate ? "animate-spin" : ""}`} /></button>
+        </div>
       </div>
 
       <div className="relative overflow-x-auto shadow-xl sm:rounded-lg mx-10 text-white border-orange-500 border-2 mb-10">

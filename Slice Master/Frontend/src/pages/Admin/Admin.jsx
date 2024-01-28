@@ -9,6 +9,14 @@ import { additem, addIngredients, addOrders } from '../../store/productSlice'
 import { jwtDecode } from 'jwt-decode'
 import { login } from '../../store/adminAuthSlice'
 import { Loading } from '../../components'
+import io from 'socket.io-client'
+import config from '../../../config/config'
+
+
+const socket = io(config.backendUrl, {
+  transports: ['websocket']
+})
+
 
 function Admin() {
 
@@ -32,7 +40,7 @@ function Admin() {
 
   const decodedData = () => {
     const token = getCookie("admintoken");
-    if(token !== null){
+    if (token !== null) {
       const data = jwtDecode(token)
       return data
     }
@@ -69,17 +77,17 @@ function Admin() {
           dispatch(addOrderDataError({ message: error.response.statusText, statusCode: error.response.status }))
         }
       })();
-      const data = decodedData();
-      if (data) {
-        dispatch(login(data.user))
-      }
+    const data = decodedData();
+    if (data) {
+      dispatch(login(data.user))
+    }
   })
 
-    if(loading){
-      return (
-        <Loading message="Verifying..."/>
-      )
-    }
+  if (loading) {
+    return (
+      <Loading message="Verifying..." />
+    )
+  }
 
 
 
@@ -91,4 +99,6 @@ function Admin() {
   )
 }
 
+
+export { socket }
 export default Admin

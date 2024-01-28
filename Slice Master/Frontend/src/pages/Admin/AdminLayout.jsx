@@ -61,8 +61,8 @@ function AdminLayout() {
         {/* Navigation Buttons */}
         <div className='px-14 pt-10 flex flex-col gap-8 text-sm overflow-y-auto'>
           {menus.map((item) => (
-            <div key={item.name} className='text-center h-10  shadow-xl bg-transparent rounded-lg drop-shadow-3xl font-bold  relative group '>
-              <NavLink to={item.path} className={({ isActive }) => ` ${isActive ? "before:w-1 before:h-full" : "before:w-0"} before:absolute  before:bg-orange-500 before:h-full group-hover:before:w-1  items-center flex group-hover:transition-all before:top-0 before:left-0 before:transition-all before:-z-10  before:rounded-2xl w-full h-full justify-center`}>{item.name}</NavLink>
+            <div key={item.name} className='h-10  shadow-xl bg-transparent rounded-lg drop-shadow-3xl font-bold  relative group '>
+              <NavLink to={item.path} className={({ isActive }) => ` ${isActive ? "before:w-1 before:h-full" : "before:w-0"} before:absolute  before:bg-orange-500 before:h-full group-hover:before:w-1  items-center flex group-hover:transition-all before:top-0 before:left-0 before:transition-all before:-z-10  before:rounded-2xl w-full h-full justify-left ml-10`}>{item.name}</NavLink>
             </div>
           ))}
           <Button btnName="Logout" className="mt-5" onClick={LogoutHandler} />
