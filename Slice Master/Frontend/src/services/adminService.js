@@ -51,7 +51,7 @@ export class AdminService {
 
       const response = await axios.get('/api/v1/getorders')
 
-      return { data: response.data }
+      return { data: response.data.orders }
 
     } catch (error) {
       throw error;
@@ -79,7 +79,7 @@ export class AdminService {
         }
       })
 
-      return {message : response.data.message}
+      return { message: response.data.message }
 
     } catch (error) {
       throw error;
@@ -87,13 +87,48 @@ export class AdminService {
   }
 
 
-  async DeleteItem(id){
+  async DeleteItem(id) {
     try {
-      
+
       const response = await axios.delete(`/api/v1/deleteitem/${id}`)
 
-      return {message : response.data.message}
+      return { message: response.data.message }
 
+
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async EditIngredient(id, { quantity }) {
+    try {
+
+      const body = {
+        id: id,
+        quantity: quantity
+      }
+
+      const response = await axios.post('/api/v1/editingredient', body)
+
+      return { message: response.data.message }
+
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async ChangeOrderStatus(id, statusValue){
+    try {
+      const body = {
+        id  : id,
+        status : statusValue
+      }
+
+      const response = await axios.post('/api/v1/changeorderstatus', body)
+
+      console.log(response)
+
+      return {message : response.data.message}
 
     } catch (error) {
       throw error;

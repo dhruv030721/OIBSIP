@@ -14,7 +14,7 @@ function Input({
     return (
         <div className={`flex flex-col font-bold ${divclassName}`}>
             <label htmlFor={id} className={`${labelclassName}`}>{label}</label>
-            <input type={type} id={id} className={`outline-none border-b-2 border-black text-sm mt-2 ${className}`} ref={ref} {...props}/>
+            <input type={type} id={id} className={`outline-none border-b-2 border-black text-sm  ${className}`} ref={ref} {...props}/>
         </div>
     )
 }

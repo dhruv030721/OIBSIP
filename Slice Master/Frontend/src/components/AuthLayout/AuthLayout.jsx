@@ -14,16 +14,15 @@ export default function Protected({ children, authentication = true }) {
         } else if (!authentication && authStatus) {
             navigate("/");
         }
-
-        setTimeout(() => {
-            setLoading(false);
-        }, 1000);
+        setLoading(false)
     }, [authStatus, navigate, authentication]);
 
 
     if (loading) {
         return (
-            <Loading message="Wait for a moment" />
+            <>
+                <Loading message="Wait for a moment" />
+            </> 
         )
     }
 

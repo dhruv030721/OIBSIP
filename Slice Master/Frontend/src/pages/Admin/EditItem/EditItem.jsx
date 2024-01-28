@@ -12,22 +12,21 @@ function EditItem() {
 
   const Items = useSelector((state) => state.product.items)
   const dispatch = useDispatch();
-  const [isLoading, setLoading] = useState(true);
+  // const [isLoading, setLoading] = useState(true);
 
   const Refresh = useCallback(async () => {
     const ItemData = await productService.GetItem();
     dispatch(additem(ItemData.data));
-    setLoading(false)
+    // setLoading(false)
   }, [Items])
 
   useEffect(() => {
     Refresh();
-  }, [Items]) 
+  }, [Items])
 
 
   const DeleteItem = async (id) => {
     try {
-      setLoading(true);
       await toast.promise(
         adminService.DeleteItem(id), {
         loading: "Processing...",
@@ -52,14 +51,10 @@ function EditItem() {
         <h2 className='text-orange-300 font-kaushan text-4xl text-center'>Edit Item</h2>
         <div className='min-h-[1px] bg-gradient-to-r from-bg-gray via-orange-500  to-bg-gray mt-5'></div>
       </div>
-      {isLoading ? (
-        <div className='w-full'>
-          <Loading />
-        </div>
-      ) : (
-        <div className='grid grid-cols-3 gap-10 m-5'>
-          {Items.map((item) => <EditItemCard key={item._id} item={item} DeleteItem={DeleteItem} />)}
-        </div>)}
+
+      <div className='grid grid-cols-3 gap-10 m-5'>
+        {Items.map((item) => <EditItemCard key={item._id} item={item} DeleteItem={DeleteItem} />)}
+      </div>
     </div>
   )
 }

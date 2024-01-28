@@ -1,10 +1,10 @@
 import React from 'react'
-import { Input, Select, Button } from '../../../components'
+import { Input, Select, Button } from '../../../components/index.js'
 import { useForm } from 'react-hook-form'
 import toast , {Toaster} from 'react-hot-toast'
 import adminService from '../../../services/productService.js';
 
-function ManageIngredients() {
+function AddIngredient() {
 
   const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -34,7 +34,7 @@ function ManageIngredients() {
   return (
     <div className='w-full'>
       <div className='p-10 flex flex-col'>
-        <h2 className='text-orange-300 font-kaushan text-4xl text-center'>Manage Ingredients</h2>
+        <h2 className='text-orange-300 font-kaushan text-4xl text-center'>Add Ingredient</h2>
         <div className='min-h-[1px] bg-gradient-to-r from-bg-gray via-orange-500  to-bg-gray mt-5'></div>
       </div>
       <div className=''>
@@ -64,7 +64,7 @@ function ManageIngredients() {
               required: true,
             })} />
           </div>
-          <Button btnName="Add Ingredients" className="w-[50%]" onClick={handleSubmit(addIngredientsHandler)} />
+          <Button btnName="Add Ingredient" className="w-[50%]" onClick={handleSubmit(addIngredientsHandler)} />
         </form>
       </div>
       <Toaster/>
@@ -72,4 +72,4 @@ function ManageIngredients() {
   )
 }
 
-export default ManageIngredients
+export default AddIngredient

@@ -184,7 +184,7 @@ function Invoice({
                 <th className='py-4'>Total</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="border-2 border-dashed">
               {cartData.map((item) => (
                 <tr key={item.item.name} className="">
                   <td className='pb-2 pt-3'>{item.item.name}</td>
@@ -197,8 +197,8 @@ function Invoice({
           </table>
         </section>
       </section>
+        {/* <div className="border-t-2 border-dashed mt-10 mx-20  "></div> */}
       <section>
-        <div className="border-t-2 border-dashed mt-10 mx-10"></div>
         <div className="flex flex-col items-end pr-14 mt-5 space-y-5 text-xl">
           <div className='flex space-x-2'>
             <p className=''>Subtotal : </p>
@@ -216,7 +216,7 @@ function Invoice({
             <p className=''>Grand Total : </p>
             <p className='border-b-2 border-white border-dashed italic'>&#8377; {grandTotal} /-</p>
           </div>
-          <button className="py-3 px-5 border-4 border-dashed rounded-xl border-orange-500 hover:bg-orange-950 tbodyansition-all" onClickCapture={displayRazorpay}>Place Order</button>
+          <button className="py-3 px-5 border-2 border-dashed rounded-xl border-orange-500 hover:bg-orange-950 tbodyansition-all" onClickCapture={displayRazorpay}>Place Order</button>
         </div>
       </section>
     </div>

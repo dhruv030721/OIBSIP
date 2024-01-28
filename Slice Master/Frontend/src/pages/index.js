@@ -14,6 +14,10 @@ import AddItem from './Admin/AddItem/AddItem'
 import Cart from './Cart/Cart'
 import EditUserProfile from './User/EditProfile'
 import ForgotPassword from './Login/ForgotPassword'
-import ManageIngredients from './Admin/ManageIngredients/ManageIngredients'
+import AddIngredient from './Admin/Ingredient/AddIngredient'
+import ManageIngredients from './Admin/Ingredient/ManageIngredients'
+import OrderHistory from './Admin/OrderHistory/OrderHistory'
 
-export { Login, Home, Signup, ContactUs, AboutUs, OurMenu, AdminLogin, AdminLayout, Dashboard, Admin, EditItem, AddItem, Cart, EditUserProfile, ForgotPassword, ManageIngredients, EditItemPage };
+
+
+export { Login, Home, Signup, ContactUs, AboutUs, OurMenu, AdminLogin, AdminLayout, Dashboard, Admin, EditItem, AddItem, Cart, EditUserProfile, ForgotPassword, AddIngredient, EditItemPage, ManageIngredients, OrderHistory };

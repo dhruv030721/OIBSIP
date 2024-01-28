@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
 import App from './App.jsx'
-import { Login, Home, Signup, ContactUs, OurMenu, AdminLogin, AdminLayout, EditUserProfile, Dashboard, Admin, EditItem, AddItem, Cart, ForgotPassword, ManageIngredients, EditItemPage } from './pages/index'
+import { Login, Home, Signup, ContactUs, OurMenu, AdminLogin, AdminLayout, EditUserProfile, Dashboard, Admin, EditItem, AddItem, Cart, ForgotPassword, AddIngredient, EditItemPage, ManageIngredients, OrderHistory } from './pages/index'
 import { Provider } from 'react-redux'
 import { store, persistor } from './store/store.js'
 import { PersistGate } from 'redux-persist/integration/react'
@@ -29,6 +29,7 @@ const router = createBrowserRouter(
         <Route index element={<AdminLogin />} />
         <Route path='' element={<ProtectedAdmin authentication><AdminLayout /></ProtectedAdmin>}>
           <Route path='dashboard' element={<ProtectedAdmin authentication><Dashboard /></ProtectedAdmin>} />
+          <Route path='order-history' element={<ProtectedAdmin authentication><OrderHistory /></ProtectedAdmin>} />
           <Route path='add-item' element={<ProtectedAdmin authentication><AddItem /></ProtectedAdmin>} />
           <Route path='edit-item' element={<ProtectedAdmin authentication><EditItem /></ProtectedAdmin>} />
           <Route path='edit-item/:id'
@@ -37,6 +38,7 @@ const router = createBrowserRouter(
               return productService.GetOneItem(id);
             }}
             element={<ProtectedAdmin authentication><EditItemPage /></ProtectedAdmin>} />
+          <Route path='add-ingredient' element={<ProtectedAdmin authentication><AddIngredient /></ProtectedAdmin>} />
           <Route path='manage-ingredients' element={<ProtectedAdmin authentication><ManageIngredients /></ProtectedAdmin>} />
         </Route>
 

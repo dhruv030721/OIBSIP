@@ -6,15 +6,16 @@ function Select({
     options,
     className = "",
     divclassName = "",
+    value,
     ...props
 }, ref) {
-
+    
     const id = useId();
 
     return (
         <div className={`${className} flex flex-col text-black gap-y-3` }>
             <label htmlFor="" className='text-white' id={id}>{label}</label>
-            <select className={`${className} outline-none rounded-lg px-4 py-2`} id={id}  {...props} ref={ref}>
+            <select className={`${className} outline-none rounded-lg px-4 py-2 font-black`} id={id} value={value} {...props} ref={ref}>
                 {options.map((option) => (
                     <option key={option}>{option}</option>
                 ))}

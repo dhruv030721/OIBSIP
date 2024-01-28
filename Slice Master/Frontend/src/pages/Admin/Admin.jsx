@@ -62,7 +62,7 @@ function Admin() {
       ; (async () => {
         try {
           const OrderResponse = await adminService.GetOrder();
-          dispatch(addOrders(OrderResponse.data.orders))
+          dispatch(addOrders(OrderResponse.data))
           setLoading(false)
         } catch (error) {
           console.error("Error fetching items:", error);

@@ -5,7 +5,7 @@ import adminService from '../../../services/adminService'
 import { addOrders } from '../../../store/productSlice'
 import { addOrderDataError } from '../../../store/errorSlice'
 import { MdOutlineRefresh } from "react-icons/md";
-
+import TableData from './TableData'
 
 function Dashboard() {
 
@@ -16,11 +16,12 @@ function Dashboard() {
   const [rotate, setRotate] = useState(false);
 
 
+
   const RefreshDashboard = useCallback(async () => {
     try {
       setRotate(true)
       const OrderResponse = await adminService.GetOrder();
-      dispatch(addOrders(OrderResponse.data.orders))
+      dispatch(addOrders(OrderResponse.data))
       setRotate(false)
     } catch (error) {
       console.error("Error fetching items:", error);
@@ -36,7 +37,7 @@ function Dashboard() {
         <h2 className='text-orange-300 font-kaushan text-4xl text-center'>Dashboard</h2>
         <div className='min-h-[1px] bg-gradient-to-r from-bg-gray via-orange-500  to-bg-gray mt-5'></div>
       </div>
-      <div className='text-white text-xl items-center justify-center flex p-10 space-x-5'>
+      <div className='text-white text-xl items-center justify-cente r flex p-10 space-x-5'>
         <DetailCard value={`Total Orders : ${TotalOrder !== null ? TotalOrder.length : 0}`} />
         <DetailCard value={`Total Items : ${TotalItems !== null ? TotalItems.length : 0}`} />
         <DetailCard value={`Total Available Ingredients : ${TotalIngredients !== null ? TotalIngredients.length : 0}`} />
@@ -46,10 +47,13 @@ function Dashboard() {
         <button><MdOutlineRefresh size={25} color='white' className={`${rotate ? "animate-spin" : ""}`} /></button>
       </div>
 
-      <div className="relative overflow-x-auto shadow-xl sm:rounded-lg mx-10 text-white border-orange-500 border-2 ">
-        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 table-auto">
+      <div className="relative overflow-x-auto shadow-xl sm:rounded-lg mx-10 text-white border-orange-500 border-2 mb-10">
+        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 table-auto min-h-32">
           <thead className="text-lg bg-dark-blue text-center ">
             <tr>
+              <th className="px-6 py-3">
+                Status
+              </th>
               <th className="px-6 py-3">
                 Date
               </th>
@@ -65,18 +69,14 @@ function Dashboard() {
               <th className="px-6 py-3">
                 Amount
               </th>
+              <th className="px-6 py-3">
+              </th>
             </tr>
           </thead>
           <tbody>
             {TotalOrder !== null && TotalOrder.length > 0 ? (
-              TotalOrder.map((order, index) => (
-                <tr key={index} className={`bg-bg-gray text-white text-center`}>
-                  <td className='py-2 px-4'>{order.date}</td>
-                  <td className='py-2 px-4'>{order.time}</td>
-                  <td className='py-2 px-4'>{order.orderId}</td>
-                  <td className='py-2 px-4'>{order.Name}</td>
-                  <td className='py-2 px-4'>{order.amount} /-</td>
-                </tr>
+              TotalOrder.filter((order) => order.status == 'Pending').map((order, index) => (
+                <TableData key={order._id} order={order} index={index} Refresh={RefreshDashboard} />
               ))
             ) : (
               <tr>

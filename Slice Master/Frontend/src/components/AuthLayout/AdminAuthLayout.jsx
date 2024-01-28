@@ -16,9 +16,7 @@ export default function ProtectedAdmin({ children, authentication = true }) {
         } else if (!authentication && authStatus !== authentication) {
             navigate("/admin/dashboard")
         }
-        setTimeout(() => {
-            setLoading(false)
-        }, 1000);
+        setLoading(false)
     }, [authStatus, navigate, authentication])  
 
 

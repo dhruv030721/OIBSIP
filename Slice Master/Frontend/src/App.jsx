@@ -67,7 +67,10 @@ function App() {
 
   if (loading) {
     return (
+      <>
       <Loading />
+      <Toaster/>
+      </>
     )
   }
 
