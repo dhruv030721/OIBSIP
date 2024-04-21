@@ -26,8 +26,6 @@ Slice Master is a Pizza Shop Management Website developed using the MERN Stack. 
 
 ### Project Image:
 
-## Login Page
-![Login Page](https://github.com/dhruv030721/OIBSIP/blob/main/Slice%20Master/Website%20Images/loginpage.png)
 
 ## Signup Page
 ![Signup Page](https://res.cloudinary.com/dbmy60hnl/image/upload/v1705559705/Practice/Webpage%20Img/signuppage.png)
