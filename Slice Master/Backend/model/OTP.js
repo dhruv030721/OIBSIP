@@ -2,33 +2,34 @@ const mongoose = require("mongoose")
 const mailSender = require('../config/mailSender')
 
 const OTP = new mongoose.Schema({
-    email : {
-        type : String,
-        required : true,
+    email: {
+        type: String,
+        required: true,
     },
-    otp : {
-        type : String,
-        required : true,
+    otp: {
+        type: String,
+        required: true,
     },
-    createdAt : {
-        type : Date,
-        default : Date.now,
-        expires : 60*2
+    createdAt: {
+        type: Date,
+        default: Date.now,
+        expires: 60 * 2
     }
 })
 
-OTP.post("save", async function(doc){
-    try{
-        
+OTP.post("save", async function (doc) {
+    try {
+
         const mailResponse = await mailSender(
-            doc.email,
+            fromemail = 'Slice Master - Dhruv Godhani <dhruvgodhani07@gmail.com>',
+            toemail = doc.email,
             "OTP Verification to change password!",
             `<h1>Your OTP is : ${doc.otp}</h1>`
         )
 
         console.log(mailResponse);
 
-    } catch(error){
+    } catch (error) {
         console.log(error);
     }
 })

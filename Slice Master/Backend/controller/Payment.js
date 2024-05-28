@@ -13,26 +13,26 @@ exports.Payment = async (req, res) => {
         });
 
         const options = {
-            amount: amount*100,
+            amount: parseInt(amount * 100),
             currency: "INR",
             receipt: "receipt_order_10000",
-            payment_capture : 1,
+            payment_capture: 1,
         }
 
         const order = await instance.orders.create(options);
 
-        if(!order) return res.status(500).json({message: "Some error occured"})
+        if (!order) return res.status(500).json({ message: "Some error occured" })
 
         res.status(200).json({
             success: true,
             order
         })
 
-        
+
     } catch (error) {
         console.log(error)
         res.status(400).json({
-            success : false,
+            success: false,
             message: "An Error Occured!"
         })
     }

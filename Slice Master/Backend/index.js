@@ -14,8 +14,8 @@ app.use(express.json());
 
 const fileUpload = require("express-fileupload");
 app.use(fileUpload({
-    useTempFiles : true,
-    tempFileDir : '/tmp/'
+    useTempFiles: true,
+    tempFileDir: '/tmp/'
 }));
 
 const cloudinary = require('./config/cloudinary')

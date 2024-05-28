@@ -62,7 +62,6 @@ function LoginForm() {
                 <Input label="Password" type="password" divclassName="mt-7" {...register("password", {
                     required: true,
                     pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-
                 })} />
                 {errors.password && <p className='text-red-500'>*Please check the password</p>}
                 <button className="bg-orange-500 mt-10 font-black text-white border border-red-500 border-b-4 w-[100%] overflow-hidden relative px-4 py-2 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group" type='submit' onClick={handleSubmit(LoginHandler)}>

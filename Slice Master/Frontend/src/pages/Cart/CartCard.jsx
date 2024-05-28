@@ -31,7 +31,7 @@ function CartCard({ name, img, category, crust, size, topping, quantity, price }
 
     return (
         <div className='flex font-light bg-black rounded-2xl py-10 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-30 drop-shadow-white-xl shadow-2xl border-orange-500 border-2 my-5 text-white pt-3'>
-            <div className='w-[40%] ml-5 space-y-5 flex flex-col items-center justify-center'>
+            <div className='w-[30%] ml-5 space-y-5 flex flex-col items-center justify-center'>
                 <img src={img} alt="" className='drop-shadow-3xl w-36' />
 
             </div>
@@ -42,21 +42,21 @@ function CartCard({ name, img, category, crust, size, topping, quantity, price }
                         <>
                             <div className='flex space-x-2'>
                                 <p className=''>Crust :</p>
-                                <p className='border-b-2 border-white border-dashed italic'>{crust}</p>
+                                <p className='border-b-2 border-white border-dashed italic text-wrap'>{crust}</p>
                             </div>
-                            <div className='flex space-x-2'>
+                            <div className='flex space-x-2 '>
                                 <p className=''>Size :</p>
                                 <p className='border-b-2 border-white border-dashed italic'>{size}</p>
                             </div>
-                            <div className='flex space-x-2'>
+                            <div className='flex space-x-2 '>
                                 <p className=''>Topping :</p>
                                 <p className='border-b-2 border-white border-dashed italic'>{topping}</p>
                             </div>
-                            <div className='flex space-x-2'>
+                            <div className='flex space-x-2 '>
                                 <p className=''>Quantity :</p>
                                 <p className='border-b-2 border-white border-dashed italic'>{quantity}</p>
                             </div>
-                            <div className='flex space-x-2'>
+                            <div className='flex space-x-2 '>
                                 <p className=''>Price :</p>
                                 <p className='border-b-2 border-white border-dashed italic'>{price} /-</p>
                             </div>

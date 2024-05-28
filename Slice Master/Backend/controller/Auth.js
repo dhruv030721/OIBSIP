@@ -86,7 +86,7 @@ exports.login = async (req, res) => {
             }
 
             setTimeout(() => {
-                return res.cookie("token", token, options).status(200).json({
+                return res.cookie("slice_token", token, options).status(200).json({
                     success: true,
                     token,
                     user,

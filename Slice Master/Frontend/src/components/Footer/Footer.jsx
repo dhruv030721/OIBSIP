@@ -45,7 +45,7 @@ font-poppins'>
           </div>
         </div>
         <div className=' flex flex-col items-center w-full bg-orange-600 h-[30%] p-2 font-poppins text-white font-semibold '>
-          <h1> Copyright &copy; 2024 All Reserved by Slice Master; Developed By Dhruv Godhani & Mit Monpara </h1>
+          <h1> Copyright &copy; 2024 All Reserved by Slice Master; Developed By Dhruv Godhani</h1>
         </div>
       </div>
     </>

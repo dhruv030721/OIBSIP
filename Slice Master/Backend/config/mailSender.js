@@ -20,7 +20,7 @@ const mailSender = async (fromemail = 'Slice Master - Dhruv Godhani <dhruvgodhan
         console.log("Email info", info);
 
         return info;
-
+        
     } catch (error) {
         console.log(error.message)
     }

@@ -13,19 +13,19 @@ function AddItem() {
   const [fileName, setFileName] = useState("Upload Image Here");
 
   const FileHandler = (event) => {
-    if (!Img) {
-      setImgValidation(true);
-      return;
-    } else {
-      setImgValidation(false)
-    }
     setImg(event.target.files[0])
     setFileName(event.target.files[0].name)
-  }
+  } 
 
 
   const AddItemHandler = async (data) => {
     try {
+      if (!Img) {
+        setImgValidation(true);
+        return;
+      } else {
+        setImgValidation(false)
+      }
       await toast.promise(
         adminService.AddItem(data, Img), {
         loading: 'Processing...',
