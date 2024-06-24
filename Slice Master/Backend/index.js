@@ -10,7 +10,7 @@ require('dotenv').config();
 const PORT = process.env.PORT || 4000
 
 const corsOptions = {
-    origin: 'https://slice-master-flax.vercel.app',
+    origin: 'https://slice-master-flax.vercel.app/',
     optionsSuccessStatus: 200,  
   };
 
