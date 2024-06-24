@@ -10,19 +10,18 @@ require('dotenv').config();
 const PORT = process.env.PORT || 4000
 
 const corsOptions = {
-    origin: 'https://oibsip-1-2czf.onrender.com',
-    optionsSuccessStatus: 200,
+    origin: 'https://slice-master-flax.vercel.app',
+    optionsSuccessStatus: 200,  
   };
 
 app.use(cors(corsOptions))
-app.use(express.json());
+app.use(express.json());    
 
 const fileUpload = require("express-fileupload");
 app.use(fileUpload({
     useTempFiles: true,
     tempFileDir: '/tmp/'
 }));
-
 const cloudinary = require('./config/cloudinary')
 cloudinary.cloudinaryConnect();
 
