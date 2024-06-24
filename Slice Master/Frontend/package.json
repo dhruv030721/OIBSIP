@@ -9,6 +9,11 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
+  "eslintConfig": {
+    "rules": {
+        "jsx-a11y/accessible-emoji": "off"
+    }
+},
   "dependencies": {
     "@reduxjs/toolkit": "^2.0.1",
     "axios": "^1.6.5",
