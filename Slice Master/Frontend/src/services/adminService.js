@@ -1,5 +1,6 @@
 /* eslint-disable no-useless-catch */
 import axios from 'axios';
+import config from "../../config/config.js"
 
 export class AdminService {
   async AddItem({ itemname, description, istrending, category, regularprice, medimumprice, largeprice }, Img) {
@@ -15,7 +16,7 @@ export class AdminService {
       formData.append('medium', medimumprice)
       formData.append('large', largeprice)
 
-      const response = await axios.post('/api/v1/additem', formData, {
+      const response = await axios.post(config.backendUrl + '/api/v1/additem', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -38,7 +39,7 @@ export class AdminService {
       };
 
 
-      const response = await axios.post('/api/v1/addingredientitem', body)
+      const response = await axios.post(config.backendUrl + '/api/v1/addingredientitem', body)
 
       return { message: response.data.message }
 
@@ -50,7 +51,7 @@ export class AdminService {
   async GetOrder() {
     try {
 
-      const response = await axios.get('/api/v1/getorders')
+      const response = await axios.get(config.backendUrl + '/api/v1/getorders')
 
       return { data: response.data.orders }
 
@@ -74,7 +75,7 @@ export class AdminService {
       formData.append('medium', medimumprice);
       formData.append('large', largeprice);
 
-      const response = await axios.post('/api/v1/edititem', formData, {
+      const response = await axios.post(config.backendUrl + '/api/v1/edititem', formData, {
         headers: {
           "Content-Type": "multipart/form-data"
         }
@@ -91,7 +92,7 @@ export class AdminService {
   async DeleteItem(id) {
     try {
 
-      const response = await axios.delete(`/api/v1/deleteitem/${id}`)
+      const response = await axios.delete(config.backendUrl + `/api/v1/deleteitem/${id}`)
 
       return { message: response.data.message }
 
@@ -109,7 +110,7 @@ export class AdminService {
         quantity: quantity
       }
 
-      const response = await axios.post('/api/v1/editingredient', body)
+      const response = await axios.post(config.backendUrl + '/api/v1/editingredient', body)
 
       return { message: response.data.message }
 
@@ -118,18 +119,18 @@ export class AdminService {
     }
   }
 
-  async ChangeOrderStatus(id, statusValue){
+  async ChangeOrderStatus(id, statusValue) {
     try {
       const body = {
-        id  : id,
-        status : statusValue
+        id: id,
+        status: statusValue
       }
 
-      const response = await axios.post('/api/v1/changeorderstatus', body)
+      const response = await axios.post(config.backendUrl + '/api/v1/changeorderstatus', body)
 
       console.log(response)
 
-      return {message : response.data.message}
+      return { message: response.data.message }
 
     } catch (error) {
       throw error;

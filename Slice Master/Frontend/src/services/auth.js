@@ -1,5 +1,6 @@
 /* eslint-disable no-useless-catch */
 import axios from 'axios'
+import config from "../../config/config.js"
 
 export class AuthService {
 
@@ -11,7 +12,7 @@ export class AuthService {
                 password,
             }
 
-            const response = await axios.post(`/api/v1/login`, body);
+            const response = await axios.post(config.backendUrl + `/api/v1/login`, body);
 
             return { data: response.data.user, message: response.data.message, success: true };
 
@@ -32,7 +33,7 @@ export class AuthService {
                 role,
             }
 
-            const response = await axios.post('/api/v1/signup', body);
+            const response = await axios.post(config.backendUrl + '/api/v1/signup', body);
 
             return { data: response.data.user, message: response.data.message, success: true }
 
@@ -49,7 +50,7 @@ export class AuthService {
                 password
             }
 
-            const response = await axios.post('/api/v1/admin/auth', body);
+            const response = await axios.post(config.backendUrl + '/api/v1/admin/auth', body);
 
 
             return { data: response.data.user, message: response.data.message }

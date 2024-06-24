@@ -1,10 +1,11 @@
 /* eslint-disable no-useless-catch */
 import axios from 'axios';
+import config from "../../config/config.js"
 
 export class ProductService {
     async GetItem() {
         try {
-            const response = await axios.get('/api/v1/getitems')
+            const response = await axios.get(config.backendUrl + '/api/v1/getitems')
 
             return { message: response.data.message, data: response.data.items }
         } catch (error) {
@@ -17,7 +18,7 @@ export class ProductService {
     async GetIngredients() {
         try {
 
-            const response = await axios.get('/api/v1/getingredients')
+            const response = await axios.get(config.backendUrl + '/api/v1/getingredients')
 
             return { message: response.data.message, data: response.data.ingredients }
 
@@ -32,7 +33,7 @@ export class ProductService {
 
             const body = { orderId, name, orderItem, amount, date, time };
 
-            const response = await axios.post('/api/v1/addOrder', body)
+            const response = await axios.post(config.backendUrl + '/api/v1/addOrder', body)
 
             return { message: response.data.message }
 
@@ -44,7 +45,7 @@ export class ProductService {
     async GetOneItem(id) {
         try {
 
-            const response = await axios.get(`/api/v1/getoneitem/${id}`);
+            const response = await axios.get(config.backendUrl + `/api/v1/getoneitem/${id}`);
 
             return { data: response.data.item }
 

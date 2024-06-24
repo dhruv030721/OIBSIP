@@ -1,17 +1,17 @@
 /* eslint-disable no-useless-catch */
 import axios from 'axios'
+import config from "../../config/config.js"
 
+export class UserService {
 
-export class UserService{
-
-    async forgotPassword({email}){
+    async forgotPassword({ email }) {
         try {
 
-            const body = {email}
-            
-            const response = await axios.post('/api/v1/forgotpassword', body)
+            const body = { email }
 
-            return {message : response.data.message}
+            const response = await axios.post(config.backendUrl + '/api/v1/forgotpassword', body)
+
+            return { message: response.data.message }
 
 
         } catch (error) {
@@ -19,51 +19,51 @@ export class UserService{
         }
     }
 
-    async otpVerification(data, email){
-        try{
-            const body= {
+    async otpVerification(data, email) {
+        try {
+            const body = {
                 email,
-                otp : data.otp
+                otp: data.otp
             }
 
             console.log(body)
 
-            const response = await axios.post('/api/v1/otpverification', body)
+            const response = await axios.post(config.backendUrl + '/api/v1/otpverification', body)
 
-            return {message : response.data.message}
+            return { message: response.data.message }
         } catch (error) {
             throw error;
         }
     }
 
-    async passwordChange({password}, email){
+    async passwordChange({ password }, email) {
         try {
             const body = {
                 email,
                 password
             }
 
-            const response = await axios.post('/api/v1/updatePassword',body)
+            const response = await axios.post(config.backendUrl + '/api/v1/updatePassword', body)
 
-            return {message : response.data.message}
+            return { message: response.data.message }
 
         } catch (error) {
             throw error;
         }
     }
 
-    async contactUs(data){
+    async contactUs(data) {
         try {
-            
+
             const body = {
-                name : data.name,
-                email : data.email,
-                message : data.message
+                name: data.name,
+                email: data.email,
+                message: data.message
             }
 
-            const response = await axios.post("/api/v1/contactus", body);
+            const response = await axios.post(config.backendUrl + "/api/v1/contactus", body);
 
-            return {message : response.data.message }
+            return { message: response.data.message }
 
 
         } catch (error) {
