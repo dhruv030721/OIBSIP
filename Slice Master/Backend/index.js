@@ -9,7 +9,12 @@ initializeSocket(server)
 require('dotenv').config();
 const PORT = process.env.PORT || 4000
 
-app.use(cors())
+const corsOptions = {
+    origin: 'https://oibsip-1-2czf.onrender.com',
+    optionsSuccessStatus: 200,
+  };
+
+app.use(cors(corsOptions))
 app.use(express.json());
 
 const fileUpload = require("express-fileupload");
